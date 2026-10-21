@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2323.1714999999995 943.45" width="2323.1714999999995" height="943.45" style="--bg:#FFFFFF;--fg:#3B3B3B;--line:#3B3B3B;--accent:#005FB8;--muted:#3B3B3BCC;--surface:#F8F8F8;--border:#3B3B3B;background:var(--bg)">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+  text { font-family: 'Inter', system-ui, sans-serif; }
+  svg {
+    /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
+    --_text:          var(--fg);
+    --_text-sec:      var(--muted, color-mix(in srgb, var(--fg) 60%, var(--bg)));
+    --_text-muted:    var(--muted, color-mix(in srgb, var(--fg) 40%, var(--bg)));
+    --_text-faint:    color-mix(in srgb, var(--fg) 25%, var(--bg));
+    --_line:          var(--line, color-mix(in srgb, var(--fg) 50%, var(--bg)));
+    --_arrow:         var(--accent, color-mix(in srgb, var(--fg) 85%, var(--bg)));
+    --_node-fill:     var(--surface, color-mix(in srgb, var(--fg) 3%, var(--bg)));
+    --_node-stroke:   var(--border, color-mix(in srgb, var(--fg) 20%, var(--bg)));
+    --_group-fill:    var(--bg);
+    --_group-hdr:     color-mix(in srgb, var(--fg) 5%, var(--bg));
+    --_inner-stroke:  color-mix(in srgb, var(--fg) 12%, var(--bg));
+    --_key-badge:     color-mix(in srgb, var(--fg) 10%, var(--bg));
+  }
+</style>
+<defs>
+  <marker id="seq-arrow" markerWidth="8" markerHeight="5" refX="8" refY="2.5" orient="auto-start-reverse">
+    <polygon points="0 0, 8 2.5, 0 5" fill="var(--_arrow)" />
+  </marker>
+  <marker id="seq-arrow-open" markerWidth="8" markerHeight="5" refX="8" refY="2.5" orient="auto-start-reverse">
+    <polyline points="0 0, 8 2.5, 0 5" fill="none" stroke="var(--_arrow)" stroke-width="1" />
+  </marker>
+</defs>
+<line class="lifeline" data-actor="Student" x1="84.025" y1="92.45" x2="84.025" y2="913.45" stroke="var(--_line)" stroke-width="0.75" stroke-dasharray="6 4" />
+<line class="lifeline" data-actor="Cam" x1="400.539" y1="70" x2="400.539" y2="913.45" stroke="var(--_line)" stroke-width="0.75" stroke-dasharray="6 4" />
+<line class="lifeline" data-actor="Buffer" x1="683.789" y1="70" x2="683.789" y2="913.45" stroke="var(--_line)" stroke-width="0.75" stroke-dasharray="6 4" />
+<line class="lifeline" data-actor="CiRA" x1="877.04" y1="70" x2="877.04" y2="913.45" stroke="var(--_line)" stroke-width="0.75" stroke-dasharray="6 4" />
+<line class="lifeline" data-actor="EventSvc" x1="1258.8939999999998" y1="70" x2="1258.8939999999998" y2="913.45" stroke="var(--_line)" stroke-width="0.75" stroke-dasharray="6 4" />
+<line class="lifeline" data-actor="DB" x1="1640.7479999999996" y1="70" x2="1640.7479999999996" y2="913.45" stroke="var(--_line)" stroke-width="0.75" stroke-dasharray="6 4" />
+<line class="lifeline" data-actor="Gateway" x1="1828.4414999999995" y1="70" x2="1828.4414999999995" y2="913.45" stroke="var(--_line)" stroke-width="0.75" stroke-dasharray="6 4" />
+<line class="lifeline" data-actor="Proctor" x1="2186.5354999999995" y1="92.45" x2="2186.5354999999995" y2="913.45" stroke="var(--_line)" stroke-width="0.75" stroke-dasharray="6 4" />
+<g class="block" data-type="loop" data-label="สตรีมภาพตลอดเวลา (Continuous Streaming)">
+  <rect x="297.241" y="100.44999999999999" width="670.5" height="100" rx="0" ry="0" fill="none" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="297.241" y="100.44999999999999" width="315" height="20" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="305.241" y="110.44999999999999" font-size="11" font-weight="600" fill="var(--_text-sec)" dy="3.8499999999999996">loop [สตรีมภาพตลอดเวลา (Continuous Streaming)]</text>
+</g>
+<g class="block" data-type="rect" data-label="rgb(30, 41, 59)">
+  <rect x="601.239" y="373.45" width="998.9589999999998" height="170.00000000000006" rx="0" ry="0" fill="none" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="601.239" y="373.45" width="136" height="20" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="609.239" y="383.45" font-size="11" font-weight="600" fill="var(--_text-sec)" dy="3.8499999999999996">rect [rgb(30, 41, 59)]</text>
+</g>
+<g class="message" data-from="Cam" data-to="Buffer" data-label="บันทึกเฟรมภาพสดเข้า Buffer ย้อนหลัง 5 วินาที" data-line-style="solid" data-arrow-head="filled" data-self="false" data-step="1">
+  <line x1="400.539" y1="140.45" x2="683.789" y2="140.45" stroke="var(--_line)" stroke-width="1" marker-end="url(#seq-arrow)" />
+  <rect x="407.164" y="122.29999999999998" width="270" height="16.3" rx="2" ry="2" fill="var(--bg)" />
+  <text x="542.164" y="130.45" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">บันทึกเฟรมภาพสดเข้า Buffer ย้อนหลัง 5 วินาที</text>
+  <circle class="sequence-number" cx="400.539" cy="140.45" r="9" fill="var(--_arrow)" stroke="var(--bg)" stroke-width="1" />
+  <text x="400.539" y="140.45" class="sequence-number-label" font-size="10" text-anchor="middle" font-weight="600" fill="var(--bg)" dy="3.5">1</text>
+</g>
+<g class="message" data-from="Cam" data-to="CiRA" data-label="ส่งภาพสดเข้าโมเดลตรวจจับ" data-line-style="solid" data-arrow-head="filled" data-self="false" data-step="2">
+  <line x1="400.539" y1="180.45" x2="877.04" y2="180.45" stroke="var(--_line)" stroke-width="1" marker-end="url(#seq-arrow)" />
+  <rect x="556.2895" y="162.29999999999998" width="165" height="16.3" rx="2" ry="2" fill="var(--bg)" />
+  <text x="638.7895" y="170.45" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">ส่งภาพสดเข้าโมเดลตรวจจับ</text>
+  <circle class="sequence-number" cx="400.539" cy="180.45" r="9" fill="var(--_arrow)" stroke="var(--bg)" stroke-width="1" />
+  <text x="400.539" y="180.45" class="sequence-number-label" font-size="10" text-anchor="middle" font-weight="600" fill="var(--bg)" dy="3.5">2</text>
+</g>
+<g class="message" data-from="Student" data-to="Cam" data-label="เกิดพฤติกรรมต้องสงสัย (เช่น ก้มดูโทรศัพท์มือถือ)" data-line-style="solid" data-arrow-head="filled" data-self="false" data-step="3">
+  <line x1="84.025" y1="220.45" x2="400.539" y2="220.45" stroke="var(--_line)" stroke-width="1" marker-end="url(#seq-arrow)" />
+  <rect x="89.28199999999998" y="202.29999999999998" width="306" height="16.3" rx="2" ry="2" fill="var(--bg)" />
+  <text x="242.28199999999998" y="210.45" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">เกิดพฤติกรรมต้องสงสัย (เช่น ก้มดูโทรศัพท์มือถือ)</text>
+  <circle class="sequence-number" cx="84.025" cy="220.45" r="9" fill="var(--_arrow)" stroke="var(--bg)" stroke-width="1" />
+  <text x="84.025" y="220.45" class="sequence-number-label" font-size="10" text-anchor="middle" font-weight="600" fill="var(--bg)" dy="3.5">3</text>
+</g>
+<g class="message" data-from="CiRA" data-to="CiRA" data-label="AI ตรวจพบ Object: &quot;using_phone&quot; (Conf: 94%)" data-line-style="solid" data-arrow-head="filled" data-self="true" data-step="4">
+  <polyline points="877.04,260.45 907.04,260.45 907.04,280.45 877.04,280.45" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#seq-arrow)" />
+  <rect x="912.04" y="262.3" width="231" height="16.3" rx="2" ry="2" fill="var(--bg)" />
+  <text x="915.04" y="270.45" font-size="11" text-anchor="start" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">AI ตรวจพบ Object: &quot;using_phone&quot; (Conf: 94%)</text>
+  <circle class="sequence-number" cx="877.04" cy="260.45" r="9" fill="var(--_arrow)" stroke="var(--bg)" stroke-width="1" />
+  <text x="877.04" y="260.45" class="sequence-number-label" font-size="10" text-anchor="middle" font-weight="600" fill="var(--bg)" dy="3.5">4</text>
+</g>
+<g class="message" data-from="CiRA" data-to="EventSvc" data-label="ยิงข้อมูลผ่าน TCP Socket: {&quot;class&quot;: &quot;using_phone&quot;, &quot;confidence&quot;: 0.94}" data-line-style="solid" data-arrow-head="filled" data-self="false" data-step="5">
+  <line x1="877.04" y1="330.45" x2="1258.8939999999998" y2="330.45" stroke="var(--_line)" stroke-width="1" marker-end="url(#seq-arrow)" />
+  <rect x="878.9669999999999" y="312.3" width="378" height="16.3" rx="2" ry="2" fill="var(--bg)" />
+  <text x="1067.9669999999999" y="320.45" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">ยิงข้อมูลผ่าน TCP Socket: {&quot;class&quot;: &quot;using_phone&quot;, &quot;confidence&quot;: 0.94}</text>
+  <circle class="sequence-number" cx="877.04" cy="330.45" r="9" fill="var(--_arrow)" stroke="var(--bg)" stroke-width="1" />
+  <text x="877.04" y="330.45" class="sequence-number-label" font-size="10" text-anchor="middle" font-weight="600" fill="var(--bg)" dy="3.5">5</text>
+</g>
+<g class="message" data-from="EventSvc" data-to="Buffer" data-label="ดึงภาพย้อนหลังก่อนเกิดเหตุ 5 วินาที (Pre-event Buffer)" data-line-style="solid" data-arrow-head="filled" data-self="false" data-step="6">
+  <line x1="1258.8939999999998" y1="413.45" x2="683.789" y2="413.45" stroke="var(--_line)" stroke-width="1" marker-end="url(#seq-arrow)" />
+  <rect x="810.8414999999999" y="395.3" width="321" height="16.3" rx="2" ry="2" fill="var(--bg)" />
+  <text x="971.3414999999999" y="403.45" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">ดึงภาพย้อนหลังก่อนเกิดเหตุ 5 วินาที (Pre-event Buffer)</text>
+  <circle class="sequence-number" cx="1258.8939999999998" cy="413.45" r="9" fill="var(--_arrow)" stroke="var(--bg)" stroke-width="1" />
+  <text x="1258.8939999999998" y="413.45" class="sequence-number-label" font-size="10" text-anchor="middle" font-weight="600" fill="var(--bg)" dy="3.5">6</text>
+</g>
+<g class="message" data-from="EventSvc" data-to="EventSvc" data-label="อัดภาพต่อเนื่องต่อไปอีก 5 วินาที (Post-event Recording)" data-line-style="solid" data-arrow-head="filled" data-self="true" data-step="7">
+  <polyline points="1258.8939999999998,453.45 1288.8939999999998,453.45 1288.8939999999998,473.45 1258.8939999999998,473.45" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#seq-arrow)" />
+  <rect x="1293.8939999999998" y="455.3" width="329" height="16.3" rx="2" ry="2" fill="var(--bg)" />
+  <text x="1296.8939999999998" y="463.45" font-size="11" text-anchor="start" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">อัดภาพต่อเนื่องต่อไปอีก 5 วินาที (Post-event Recording)</text>
+  <circle class="sequence-number" cx="1258.8939999999998" cy="453.45" r="9" fill="var(--_arrow)" stroke="var(--bg)" stroke-width="1" />
+  <text x="1258.8939999999998" y="453.45" class="sequence-number-label" font-size="10" text-anchor="middle" font-weight="600" fill="var(--bg)" dy="3.5">7</text>
+</g>
+<g class="message" data-from="EventSvc" data-to="EventSvc" data-label="รวมเฟรมและบันทึกเป็น highlight_timestamp.mp4" data-line-style="solid" data-arrow-head="filled" data-self="true" data-step="8">
+  <polyline points="1258.8939999999998,523.45 1288.8939999999998,523.45 1288.8939999999998,543.45 1258.8939999999998,543.45" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#seq-arrow)" />
+  <rect x="1293.8939999999998" y="525.3000000000001" width="264" height="16.3" rx="2" ry="2" fill="var(--bg)" />
+  <text x="1296.8939999999998" y="533.45" font-size="11" text-anchor="start" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">รวมเฟรมและบันทึกเป็น highlight_timestamp.mp4</text>
+  <circle class="sequence-number" cx="1258.8939999999998" cy="523.45" r="9" fill="var(--_arrow)" stroke="var(--bg)" stroke-width="1" />
+  <text x="1258.8939999999998" y="523.45" class="sequence-number-label" font-size="10" text-anchor="middle" font-weight="600" fill="var(--bg)" dy="3.5">8</text>
+</g>
+<g class="message" data-from="EventSvc" data-to="DB" data-label="บันทึก Event (timestamp, type, confidence, video_path, status='pending')" data-line-style="solid" data-arrow-head="filled" data-self="false" data-step="9">
+  <line x1="1258.8939999999998" y1="593.45" x2="1640.7479999999996" y2="593.45" stroke="var(--_line)" stroke-width="1" marker-end="url(#seq-arrow)" />
+  <rect x="1260.8209999999997" y="575.3000000000001" width="378" height="16.3" rx="2" ry="2" fill="var(--bg)" />
+  <text x="1449.8209999999997" y="583.45" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">บันทึก Event (timestamp, type, confidence, video_path, status=&#39;pending&#39;)</text>
+  <circle class="sequence-number" cx="1258.8939999999998" cy="593.45" r="9" fill="var(--_arrow)" stroke="var(--bg)" stroke-width="1" />
+  <text x="1258.8939999999998" y="593.45" class="sequence-number-label" font-size="10" text-anchor="middle" font-weight="600" fill="var(--bg)" dy="3.5">9</text>
+</g>
+<g class="message" data-from="EventSvc" data-to="Gateway" data-label="แจ้งเตือนเหตุการณ์ใหม่" data-line-style="solid" data-arrow-head="filled" data-self="false" data-step="10">
+  <line x1="1258.8939999999998" y1="633.45" x2="1828.4414999999995" y2="633.45" stroke="var(--_line)" stroke-width="1" marker-end="url(#seq-arrow)" />
+  <rect x="1467.6677499999996" y="615.3000000000001" width="152" height="16.3" rx="2" ry="2" fill="var(--bg)" />
+  <text x="1543.6677499999996" y="623.45" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">แจ้งเตือนเหตุการณ์ใหม่</text>
+  <circle class="sequence-number" cx="1258.8939999999998" cy="633.45" r="9" fill="var(--_arrow)" stroke="var(--bg)" stroke-width="1" />
+  <text x="1258.8939999999998" y="633.45" class="sequence-number-label" font-size="10" text-anchor="middle" font-weight="600" fill="var(--bg)" dy="3.5">10</text>
+</g>
+<g class="message" data-from="Gateway" data-to="Proctor" data-label="ยิง WebSocket แจ้งเตือน Real-Time ทันที (Alert Sound &amp; Badge)" data-line-style="dashed" data-arrow-head="filled" data-self="false" data-step="11">
+  <line x1="1828.4414999999995" y1="673.45" x2="2186.5354999999995" y2="673.45" stroke="var(--_line)" stroke-width="1" stroke-dasharray="6 4" marker-end="url(#seq-arrow)" />
+  <rect x="1831.4884999999995" y="655.3000000000001" width="352" height="16.3" rx="2" ry="2" fill="var(--bg)" />
+  <text x="2007.4884999999995" y="663.45" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">ยิง WebSocket แจ้งเตือน Real-Time ทันที (Alert Sound &amp; Badge)</text>
+  <circle class="sequence-number" cx="1828.4414999999995" cy="673.45" r="9" fill="var(--_arrow)" stroke="var(--bg)" stroke-width="1" />
+  <text x="1828.4414999999995" y="673.45" class="sequence-number-label" font-size="10" text-anchor="middle" font-weight="600" fill="var(--bg)" dy="3.5">11</text>
+</g>
+<g class="message" data-from="Proctor" data-to="Gateway" data-label="กดปุ่ม [▶ Watch 10s Clip]" data-line-style="solid" data-arrow-head="filled" data-self="false" data-step="12">
+  <line x1="2186.5354999999995" y1="713.45" x2="1828.4414999999995" y2="713.45" stroke="var(--_line)" stroke-width="1" marker-end="url(#seq-arrow)" />
+  <rect x="1939.4884999999995" y="695.3000000000001" width="136" height="16.3" rx="2" ry="2" fill="var(--bg)" />
+  <text x="2007.4884999999995" y="703.45" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">กดปุ่ม [▶ Watch 10s Clip]</text>
+  <circle class="sequence-number" cx="2186.5354999999995" cy="713.45" r="9" fill="var(--_arrow)" stroke="var(--bg)" stroke-width="1" />
+  <text x="2186.5354999999995" y="713.45" class="sequence-number-label" font-size="10" text-anchor="middle" font-weight="600" fill="var(--bg)" dy="3.5">12</text>
+</g>
+<g class="message" data-from="Gateway" data-to="Proctor" data-label="เล่นวิดีโอหลักฐาน 10 วินาที บนหน้าต่าง Liquid Glass Modal" data-line-style="dashed" data-arrow-head="filled" data-self="false" data-step="13">
+  <line x1="1828.4414999999995" y1="753.45" x2="2186.5354999999995" y2="753.45" stroke="var(--_line)" stroke-width="1" stroke-dasharray="6 4" marker-end="url(#seq-arrow)" />
+  <rect x="1837.4884999999995" y="735.3000000000001" width="340" height="16.3" rx="2" ry="2" fill="var(--bg)" />
+  <text x="2007.4884999999995" y="743.45" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">เล่นวิดีโอหลักฐาน 10 วินาที บนหน้าต่าง Liquid Glass Modal</text>
+  <circle class="sequence-number" cx="1828.4414999999995" cy="753.45" r="9" fill="var(--_arrow)" stroke="var(--bg)" stroke-width="1" />
+  <text x="1828.4414999999995" y="753.45" class="sequence-number-label" font-size="10" text-anchor="middle" font-weight="600" fill="var(--bg)" dy="3.5">13</text>
+</g>
+<g class="message" data-from="Proctor" data-to="Gateway" data-label="กดปุ่ม [Confirm Cheating] (ยืนยันว่าทุจริตจริง)" data-line-style="solid" data-arrow-head="filled" data-self="false" data-step="14">
+  <line x1="2186.5354999999995" y1="793.45" x2="1828.4414999999995" y2="793.45" stroke="var(--_line)" stroke-width="1" marker-end="url(#seq-arrow)" />
+  <rect x="1869.4884999999995" y="775.3000000000001" width="276" height="16.3" rx="2" ry="2" fill="var(--bg)" />
+  <text x="2007.4884999999995" y="783.45" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">กดปุ่ม [Confirm Cheating] (ยืนยันว่าทุจริตจริง)</text>
+  <circle class="sequence-number" cx="2186.5354999999995" cy="793.45" r="9" fill="var(--_arrow)" stroke="var(--bg)" stroke-width="1" />
+  <text x="2186.5354999999995" y="793.45" class="sequence-number-label" font-size="10" text-anchor="middle" font-weight="600" fill="var(--bg)" dy="3.5">14</text>
+</g>
+<g class="message" data-from="Gateway" data-to="EventSvc" data-label="อัปเดตสถานะเป็น 'confirmed' พร้อมบันทึกผู้ตรวจ" data-line-style="solid" data-arrow-head="filled" data-self="false" data-step="15">
+  <line x1="1828.4414999999995" y1="833.45" x2="1258.8939999999998" y2="833.45" stroke="var(--_line)" stroke-width="1" marker-end="url(#seq-arrow)" />
+  <rect x="1401.6677499999996" y="815.3000000000001" width="284" height="16.3" rx="2" ry="2" fill="var(--bg)" />
+  <text x="1543.6677499999996" y="823.45" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">อัปเดตสถานะเป็น &#39;confirmed&#39; พร้อมบันทึกผู้ตรวจ</text>
+  <circle class="sequence-number" cx="1828.4414999999995" cy="833.45" r="9" fill="var(--_arrow)" stroke="var(--bg)" stroke-width="1" />
+  <text x="1828.4414999999995" y="833.45" class="sequence-number-label" font-size="10" text-anchor="middle" font-weight="600" fill="var(--bg)" dy="3.5">15</text>
+</g>
+<g class="message" data-from="EventSvc" data-to="DB" data-label="อัปเดตสถานะลง SQLite" data-line-style="solid" data-arrow-head="filled" data-self="false" data-step="16">
+  <line x1="1258.8939999999998" y1="873.45" x2="1640.7479999999996" y2="873.45" stroke="var(--_line)" stroke-width="1" marker-end="url(#seq-arrow)" />
+  <rect x="1384.3209999999997" y="855.3000000000001" width="131" height="16.3" rx="2" ry="2" fill="var(--bg)" />
+  <text x="1449.8209999999997" y="863.45" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">อัปเดตสถานะลง SQLite</text>
+  <circle class="sequence-number" cx="1258.8939999999998" cy="873.45" r="9" fill="var(--_arrow)" stroke="var(--bg)" stroke-width="1" />
+  <text x="1258.8939999999998" y="873.45" class="sequence-number-label" font-size="10" text-anchor="middle" font-weight="600" fill="var(--bg)" dy="3.5">16</text>
+</g>
+<g class="note" data-position="over" data-actors="EventSvc,Buffer">
+  <polygon points="860.5064999999998,338.45 1076.1764999999998,338.45 1082.1764999999998,344.45 1082.1764999999998,361.45 860.5064999999998,361.45" fill="var(--bg)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <polygon points="1076.1764999999998,338.45 1082.1764999999998,344.45 1076.1764999999998,344.45" fill="var(--_inner-stroke)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="971.3414999999999" y="349.95" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">กระบวนการบันทึกคลิปไฮไลต์ 10 วินาที</text>
+</g>
+<g class="actor" data-id="Student" data-label="ผู้เข้าสอบ" data-type="actor">
+  <g transform="translate(66.025,32) scale(1.5)">
+    <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" fill="none" stroke="var(--_line)" stroke-width="0.6666666666666666" />
+    <path d="M15 10C15 11.6569 13.6569 13 12 13C10.3431 13 9 11.6569 9 10C9 8.34315 10.3431 7 12 7C13.6569 7 15 8.34315 15 10Z" fill="none" stroke="var(--_line)" stroke-width="0.6666666666666666" />
+    <path d="M5.62842 18.3563C7.08963 17.0398 9.39997 16 12 16C14.6 16 16.9104 17.0398 18.3716 18.3563" fill="none" stroke="var(--_line)" stroke-width="0.6666666666666666" />
+  </g>
+  <text x="84.025" y="84" font-size="13" text-anchor="middle" font-weight="500" fill="var(--_text)" dy="4.55">ผู้เข้าสอบ</text>
+</g>
+<g class="actor" data-id="Cam" data-label="กล้อง MERCUSYS MC210" data-type="participant">
+  <rect x="307.241" y="30" width="186.59599999999995" height="40" rx="4" ry="4" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="400.539" y="50" font-size="13" text-anchor="middle" font-weight="500" fill="var(--_text)" dy="4.55">กล้อง MERCUSYS MC210</text>
+</g>
+<g class="actor" data-id="Buffer" data-label="Circular Buffer (5s)" data-type="participant">
+  <rect x="611.239" y="30" width="145.10000000000002" height="40" rx="4" ry="4" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="683.789" y="50" font-size="13" text-anchor="middle" font-weight="500" fill="var(--_text)" dy="4.55">Circular Buffer (5s)</text>
+</g>
+<g class="actor" data-id="CiRA" data-label="CiRA CORE (AI Model)" data-type="participant">
+  <rect x="796.3389999999999" y="30" width="161.402" height="40" rx="4" ry="4" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="877.04" y="50" font-size="13" text-anchor="middle" font-weight="500" fill="var(--_text)" dy="4.55">CiRA CORE (AI Model)</text>
+</g>
+<g class="actor" data-id="EventSvc" data-label="Event Service (Port 8003)" data-type="participant">
+  <rect x="1166.7074999999998" y="30" width="184.373" height="40" rx="4" ry="4" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="1258.8939999999998" y="50" font-size="13" text-anchor="middle" font-weight="500" fill="var(--_text)" dy="4.55">Event Service (Port 8003)</text>
+</g>
+<g class="actor" data-id="DB" data-label="SQLite Database" data-type="participant">
+  <rect x="1574.4964999999995" y="30" width="132.503" height="40" rx="4" ry="4" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="1640.7479999999996" y="50" font-size="13" text-anchor="middle" font-weight="500" fill="var(--_text)" dy="4.55">SQLite Database</text>
+</g>
+<g class="actor" data-id="Gateway" data-label="API Gateway (WS Hub)" data-type="participant">
+  <rect x="1746.9994999999994" y="30" width="162.88399999999996" height="40" rx="4" ry="4" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="1828.4414999999995" y="50" font-size="13" text-anchor="middle" font-weight="500" fill="var(--_text)" dy="4.55">API Gateway (WS Hub)</text>
+</g>
+<g class="actor" data-id="Proctor" data-label="ผู้คุมสอบ (React Dashboard)" data-type="actor">
+  <g transform="translate(2168.5354999999995,32) scale(1.5)">
+    <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" fill="none" stroke="var(--_line)" stroke-width="0.6666666666666666" />
+    <path d="M15 10C15 11.6569 13.6569 13 12 13C10.3431 13 9 11.6569 9 10C9 8.34315 10.3431 7 12 7C13.6569 7 15 8.34315 15 10Z" fill="none" stroke="var(--_line)" stroke-width="0.6666666666666666" />
+    <path d="M5.62842 18.3563C7.08963 17.0398 9.39997 16 12 16C14.6 16 16.9104 17.0398 18.3716 18.3563" fill="none" stroke="var(--_line)" stroke-width="0.6666666666666666" />
+  </g>
+  <text x="2186.5354999999995" y="84" font-size="13" text-anchor="middle" font-weight="500" fill="var(--_text)" dy="4.55">ผู้คุมสอบ (React Dashboard)</text>
+</g>
+</svg>

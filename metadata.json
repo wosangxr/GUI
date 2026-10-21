@@ -1,0 +1,6 @@
+{
+  "name": "ExamGuard AI - Live Proctoring Dashboard",
+  "description": "AI-Powered Exam Cheating Detection & Real-Time Monitoring Dashboard with multi-camera feeds, live incident triage, and evidence playback.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

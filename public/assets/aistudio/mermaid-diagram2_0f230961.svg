@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2398.051 457.4" width="2398.051" height="457.4" style="--bg:#FFFFFF;--fg:#3B3B3B;--line:#3B3B3B;--accent:#005FB8;--muted:#3B3B3BCC;--surface:#F8F8F8;--border:#3B3B3B;background:var(--bg)">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+  text { font-family: 'Inter', system-ui, sans-serif; }
+  svg {
+    /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
+    --_text:          var(--fg);
+    --_text-sec:      var(--muted, color-mix(in srgb, var(--fg) 60%, var(--bg)));
+    --_text-muted:    var(--muted, color-mix(in srgb, var(--fg) 40%, var(--bg)));
+    --_text-faint:    color-mix(in srgb, var(--fg) 25%, var(--bg));
+    --_line:          var(--line, color-mix(in srgb, var(--fg) 50%, var(--bg)));
+    --_arrow:         var(--accent, color-mix(in srgb, var(--fg) 85%, var(--bg)));
+    --_node-fill:     var(--surface, color-mix(in srgb, var(--fg) 3%, var(--bg)));
+    --_node-stroke:   var(--border, color-mix(in srgb, var(--fg) 20%, var(--bg)));
+    --_group-fill:    var(--bg);
+    --_group-hdr:     color-mix(in srgb, var(--fg) 5%, var(--bg));
+    --_inner-stroke:  color-mix(in srgb, var(--fg) 12%, var(--bg));
+    --_key-badge:     color-mix(in srgb, var(--fg) 10%, var(--bg));
+  }
+</style>
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="5" refX="7" refY="2.5" orient="auto">
+    <polygon points="0 0, 8 2.5, 0 5" fill="var(--_arrow)" stroke="var(--_arrow)" stroke-width="0.75" stroke-linejoin="round" />
+  </marker>
+  <marker id="arrowhead-start" markerWidth="8" markerHeight="5" refX="1" refY="2.5" orient="auto-start-reverse">
+    <polygon points="8 0, 0 2.5, 8 5" fill="var(--_arrow)" stroke="var(--_arrow)" stroke-width="0.75" stroke-linejoin="round" />
+  </marker>
+</defs>
+<g class="subgraph" data-id="Frontend" data-label=" ส่วนหน้าบ้าน (Frontend Layer) ">
+  <rect x="40" y="81.79166666666664" width="231.78299999999996" height="195.60000000000002" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="40" y="81.79166666666664" width="231.78299999999996" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="52" y="95.79166666666664" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999"> ส่วนหน้าบ้าน (Frontend Layer) </text>
+</g>
+<g class="subgraph" data-id="GatewayLayer" data-label=" ประตูทางเข้าหลัก (API Gateway) ">
+  <rect x="464.277" y="113.49166666666666" width="511.42899999999986" height="146.9" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="464.277" y="113.49166666666666" width="511.42899999999986" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="476.277" y="127.49166666666666" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999"> ประตูทางเข้าหลัก (API Gateway) </text>
+</g>
+<g class="subgraph" data-id="Microservices" data-label=" ส่วนประมวลผลหลังบ้าน (Microservices Layer) ">
+  <rect x="1439.37" y="89.3" width="293.28599999999994" height="328.1" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="1439.37" y="89.3" width="293.28599999999994" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="1451.37" y="103.3" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999"> ส่วนประมวลผลหลังบ้าน (Microservices Layer) </text>
+</g>
+<g class="subgraph" data-id="AI_Engine" data-label=" ส่วนปัญญาประดิษฐ์ (Edge AI Engine) ">
+  <rect x="1029.706" y="166.6416666666667" width="188.06400000000002" height="113.80000000000001" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="1029.706" y="166.6416666666667" width="188.06400000000002" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="1041.706" y="180.6416666666667" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999"> ส่วนปัญญาประดิษฐ์ (Edge AI Engine) </text>
+</g>
+<g class="subgraph" data-id="StorageLayer" data-label=" ส่วนจัดเก็บข้อมูล (Storage Layer) ">
+  <rect x="2181.102" y="94.28333333333336" width="176.949" height="223.60000000000002" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="2181.102" y="94.28333333333336" width="176.949" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="2193.102" y="108.28333333333336" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999"> ส่วนจัดเก็บข้อมูล (Storage Layer) </text>
+</g>
+<polyline class="edge" data-from="UI" data-to="GATEWAY" data-style="solid" data-arrow-start="true" data-arrow-end="true" data-label="REST API" points="256.89449999999994,234.49166666666667 341.70099999999996,234.49166666666665 341.70099999999996,217.39166666666668 480.277,217.39166666666665" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" marker-start="url(#arrowhead-start)" />
+<polyline class="edge" data-from="WS_CLIENT" data-to="WS_HUB" data-style="solid" data-arrow-start="true" data-arrow-end="true" data-label="ws://.../ws/alerts" points="254.67149999999998,152.69166666666663 313.78299999999996,152.69166666666666 313.78299999999996,162.84166666666667 446.277,162.84166666666667 446.277,169.79166666666666 749.549,169.79166666666666" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" marker-start="url(#arrowhead-start)" />
+<polyline class="edge" data-from="GATEWAY" data-to="AUTH_SVC" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="/api/auth &amp; /api/audit" points="701.549,235.32500000000002 713.549,235.32500000000002 713.549,243.39166666666668 1005.7059999999999,243.3916666666667 1005.7059999999999,379.55000000000007 1421.37,379.55000000000007 1421.37,366.05 1464.2619999999997,366.05" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="GATEWAY" data-to="CAM_SVC" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="/api/camera &amp; /api/video" points="701.549,217.39166666666668 1017.7059999999999,217.39166666666668 1017.7059999999999,99.9666666666667 1421.37,99.9666666666667 1421.37,168.65 1464.262,168.65" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="GATEWAY" data-to="EVENT_SVC" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="/api/events" points="701.549,226.35833333333335 725.549,226.35833333333335 725.549,230.39166666666668 1017.7059999999999,230.39166666666668 1017.7059999999999,319.4416666666667 1421.37,319.4416666666667 1421.37,279.1333333333334 1464.2619999999997,279.1333333333334" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="AUTH_SVC" data-to="DB" data-style="solid" data-arrow-start="true" data-arrow-end="true" data-label="Read / Write" points="1689.9799999999998,366.05 2073.616,366.04999999999995 2073.616,344.10833333333335 2163.102,344.10833333333335 2163.102,279.28333333333336 2197.102,279.28333333333336" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" marker-start="url(#arrowhead-start)" />
+<polyline class="edge" data-from="EVENT_SVC" data-to="DB" data-style="solid" data-arrow-start="true" data-arrow-end="true" data-label="Insert Events" points="1707.764,279.1333333333333 2043.0819999999999,279.1333333333333 2043.0819999999999,284 2151.102,284 2151.102,256.6833333333334 2197.102,256.6833333333334" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" marker-start="url(#arrowhead-start)" />
+<polyline class="edge" data-from="EVENT_SVC" data-to="STORAGE" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="Save MP4 &amp; JPG" points="1707.764,255.56666666666666 2025.8559999999998,255.5666666666667 2025.8559999999998,250.70000000000005 2163.102,250.70000000000005 2163.102,183.48333333333335 2197.102,183.48333333333335" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="GATEWAY" data-to="STORAGE" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="Serve Clips" points="701.549,208.425 725.549,208.425 725.549,204.39166666666668 1005.7059999999999,204.39166666666668 1005.7059999999999,51.000000000000014 2163.102,51.000000000000014 2163.102,160.88333333333338 2197.102,160.88333333333338" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="CIRA_CORE" data-to="EVENT_SVC" data-style="solid" data-arrow-start="false" data-arrow-end="true" data-label="TCP Socket Port 9999" points="1201.77,237.5416666666667 1421.37,237.54166666666674 1421.37,255.56666666666672 1464.262,255.56666666666666" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="CAM_SVC" data-to="CAM_HW" data-style="solid" data-arrow-start="true" data-arrow-end="true" data-label="ONVIF Commands" points="1725.548,168.65 1928.06,168.65" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#arrowhead)" marker-start="url(#arrowhead-start)" />
+<polyline class="edge" data-from="GATEWAY" data-to="WS_HUB" data-style="solid" data-arrow-start="false" data-arrow-end="false" points="701.549,199.45833333333331 713.549,199.45833333333331 713.549,182.09166666666667 749.549,182.09166666666667" fill="none" stroke="var(--_line)" stroke-width="1" />
+<g class="edge-label" data-from="UI" data-to="GATEWAY" data-label="REST API">
+  <rect x="349.70099999999996" y="201.3916666666667" width="64.57600000000001" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="381.989" y="216.5416666666667" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">REST API</text>
+</g>
+<g class="edge-label" data-from="WS_CLIENT" data-to="WS_HUB" data-label="ws://.../ws/alerts">
+  <rect x="321.78299999999996" y="146.84166666666667" width="92.49400000000003" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="368.03" y="161.99166666666667" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">ws://.../ws/alerts</text>
+</g>
+<g class="edge-label" data-from="GATEWAY" data-to="AUTH_SVC" data-label="/api/auth &amp; /api/audit">
+  <rect x="1279.0559999999998" y="363.55000000000007" width="110.31400000000002" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="1334.2129999999997" y="378.70000000000005" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">/api/auth &amp; /api/audit</text>
+</g>
+<g class="edge-label" data-from="GATEWAY" data-to="CAM_SVC" data-label="/api/camera &amp; /api/video">
+  <rect x="1260.0479999999998" y="83.9666666666667" width="129.32200000000003" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="1324.7089999999998" y="99.1166666666667" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">/api/camera &amp; /api/video</text>
+</g>
+<g class="edge-label" data-from="GATEWAY" data-to="EVENT_SVC" data-label="/api/events">
+  <rect x="1319.4479999999999" y="303.4416666666667" width="69.92200000000001" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="1354.4089999999999" y="318.5916666666667" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">/api/events</text>
+</g>
+<g class="edge-label" data-from="AUTH_SVC" data-to="DB" data-label="Read / Write">
+  <rect x="2081.616" y="328.10833333333335" width="73.486" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="2118.359" y="343.2583333333333" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">Read / Write</text>
+</g>
+<g class="edge-label" data-from="EVENT_SVC" data-to="DB" data-label="Insert Events">
+  <rect x="2051.082" y="268.00000000000006" width="80.02000000000001" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="2091.092" y="283.15000000000003" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">Insert Events</text>
+</g>
+<g class="edge-label" data-from="EVENT_SVC" data-to="STORAGE" data-label="Save MP4 &amp; JPG">
+  <rect x="2033.8559999999998" y="234.70000000000005" width="97.246" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="2082.479" y="249.85000000000005" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">Save MP4 &amp; JPG</text>
+</g>
+<g class="edge-label" data-from="GATEWAY" data-to="STORAGE" data-label="Serve Clips">
+  <rect x="2082.2099999999996" y="35.000000000000014" width="72.89200000000001" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="2118.6559999999995" y="50.15000000000001" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">Serve Clips</text>
+</g>
+<g class="edge-label" data-from="CIRA_CORE" data-to="EVENT_SVC" data-label="TCP Socket Port 9999">
+  <rect x="1267.77" y="221.54166666666674" width="121.60000000000001" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="1328.57" y="236.69166666666675" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">TCP Socket Port 9999</text>
+</g>
+<g class="edge-label" data-from="CAM_SVC" data-to="CAM_HW" data-label="ONVIF Commands">
+  <rect x="1782.656" y="152.65" width="101.404" height="30.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="1" />
+  <text x="1833.358" y="167.8" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-sec)" dy="3.8499999999999996">ONVIF Commands</text>
+</g>
+<g class="node" data-id="CAM_HW" data-label=" กล้อง MERCUSYS MC210 " data-shape="rectangle">
+  <rect x="1928.06" y="150.2" width="199.04199999999994" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="2027.581" y="168.64999999999998" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55"> กล้อง MERCUSYS MC210 </text>
+</g>
+<g class="node" data-id="UI" data-label=" React 18 + TypeScript 
+(Liquid Glass UI + Tailwind) " data-shape="rectangle">
+  <rect x="57.11149999999998" y="207.59166666666664" width="199.78299999999996" height="53.800000000000004" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="157.00299999999996" y="234.49166666666665" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)"><tspan x="157.00299999999996" dy="-3.9000000000000012"> React 18 + TypeScript </tspan><tspan x="157.00299999999996" dy="16.900000000000002">(Liquid Glass UI + Tailwind) </tspan></text>
+</g>
+<g class="node" data-id="WS_CLIENT" data-label=" WebSocket Client 
+(Real-Time Alert Receiver) " data-shape="rectangle">
+  <rect x="57.11149999999998" y="125.79166666666664" width="197.56" height="53.800000000000004" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="155.89149999999998" y="152.69166666666663" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)"><tspan x="155.89149999999998" dy="-3.9000000000000012"> WebSocket Client </tspan><tspan x="155.89149999999998" dy="16.900000000000002">(Real-Time Alert Receiver) </tspan></text>
+</g>
+<g class="node" data-id="GATEWAY" data-label=" API Gateway (Port 8000) 
+Reverse Proxy / Static Server " data-shape="rectangle">
+  <rect x="480.277" y="190.49166666666667" width="221.27199999999996" height="53.800000000000004" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="590.913" y="217.39166666666668" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)"><tspan x="590.913" dy="-3.9000000000000012"> API Gateway (Port 8000) </tspan><tspan x="590.913" dy="16.900000000000002">Reverse Proxy / Static Server </tspan></text>
+</g>
+<g class="node" data-id="WS_HUB" data-label=" WebSocket Hub / Broadcast " data-shape="rectangle">
+  <rect x="749.549" y="157.49166666666667" width="210.15699999999995" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="854.6274999999999" y="175.94166666666666" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55"> WebSocket Hub / Broadcast </text>
+</g>
+<g class="node" data-id="AUTH_SVC" data-label=" 1. Auth &amp; Audit Service 
+(Port 8001) 
+JWT, Google OAuth, Audit Logs " data-shape="rectangle">
+  <rect x="1464.262" y="330.70000000000005" width="225.71799999999996" height="70.7" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1577.1209999999999" y="366.05000000000007" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)"><tspan x="1577.1209999999999" dy="-12.350000000000001"> 1. Auth &amp; Audit Service </tspan><tspan x="1577.1209999999999" dy="16.900000000000002">(Port 8001) </tspan><tspan x="1577.1209999999999" dy="16.900000000000002">JWT, Google OAuth, Audit Logs </tspan></text>
+</g>
+<g class="node" data-id="CAM_SVC" data-label=" 2. Camera &amp; PTZ Service 
+(Port 8002) 
+RTSP MJPEG Stream, ONVIF Control " data-shape="rectangle">
+  <rect x="1464.262" y="133.3" width="261.28599999999994" height="70.7" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1594.905" y="168.65" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)"><tspan x="1594.905" dy="-12.350000000000001"> 2. Camera &amp; PTZ Service </tspan><tspan x="1594.905" dy="16.900000000000002">(Port 8002) </tspan><tspan x="1594.905" dy="16.900000000000002">RTSP MJPEG Stream, ONVIF Control </tspan></text>
+</g>
+<g class="node" data-id="EVENT_SVC" data-label=" 3. Event &amp; Highlight Service 
+(Port 8003) 
+Circular Buffer, 10s MP4 Recorder " data-shape="rectangle">
+  <rect x="1464.262" y="232" width="243.50199999999998" height="70.7" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1586.013" y="267.35" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)"><tspan x="1586.013" dy="-12.350000000000001"> 3. Event &amp; Highlight Service </tspan><tspan x="1586.013" dy="16.900000000000002">(Port 8003) </tspan><tspan x="1586.013" dy="16.900000000000002">Circular Buffer, 10s MP4 Recorder </tspan></text>
+</g>
+<g class="node" data-id="CIRA_CORE" data-label=" CiRA CORE 
+Deep Detect (ai mo1) " data-shape="rectangle">
+  <rect x="1045.706" y="210.6416666666667" width="156.06400000000002" height="53.800000000000004" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1123.7379999999998" y="237.5416666666667" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)"><tspan x="1123.7379999999998" dy="-3.9000000000000012"> CiRA CORE </tspan><tspan x="1123.7379999999998" dy="16.900000000000002">Deep Detect (ai mo1) </tspan></text>
+</g>
+<g class="node" data-id="DB" data-label=" SQLite Database 
+exam_proctor.db " data-shape="cylinder">
+  <rect x="2197.102" y="241.08333333333337" width="144.949" height="53.80000000000001" fill="var(--_node-fill)" stroke="none" />
+  <line x1="2197.102" y1="241.08333333333337" x2="2197.102" y2="294.8833333333334" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <line x1="2342.051" y1="241.08333333333337" x2="2342.051" y2="294.8833333333334" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <ellipse cx="2269.5764999999997" cy="294.8833333333334" rx="72.4745" ry="7" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <ellipse cx="2269.5764999999997" cy="241.08333333333337" rx="72.4745" ry="7" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="2269.5764999999997" y="267.98333333333335" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)"><tspan x="2269.5764999999997" dy="-3.9000000000000012"> SQLite Database </tspan><tspan x="2269.5764999999997" dy="16.900000000000002">exam_proctor.db </tspan></text>
+</g>
+<g class="node" data-id="STORAGE" data-label=" Local Storage 
+/highlights/*.mp4 " data-shape="cylinder">
+  <rect x="2197.102" y="145.28333333333336" width="141.985" height="53.80000000000001" fill="var(--_node-fill)" stroke="none" />
+  <line x1="2197.102" y1="145.28333333333336" x2="2197.102" y2="199.08333333333337" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <line x1="2339.087" y1="145.28333333333336" x2="2339.087" y2="199.08333333333337" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <ellipse cx="2268.0944999999997" cy="199.08333333333337" rx="70.9925" ry="7" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <ellipse cx="2268.0944999999997" cy="145.28333333333336" rx="70.9925" ry="7" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="2268.0944999999997" y="172.18333333333337" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)"><tspan x="2268.0944999999997" dy="-3.9000000000000012"> Local Storage </tspan><tspan x="2268.0944999999997" dy="16.900000000000002">/highlights/*.mp4 </tspan></text>
+</g>
+</svg>

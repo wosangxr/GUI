@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 636.4889999999999 784" width="636.4889999999999" height="784" style="--bg:#FFFFFF;--fg:#3B3B3B;--line:#3B3B3B;--accent:#005FB8;--muted:#3B3B3BCC;--surface:#F8F8F8;--border:#3B3B3B;background:var(--bg)">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;display=swap');
+  text { font-family: 'Inter', system-ui, sans-serif; }
+  .mono { font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, monospace; }
+  svg {
+    /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
+    --_text:          var(--fg);
+    --_text-sec:      var(--muted, color-mix(in srgb, var(--fg) 60%, var(--bg)));
+    --_text-muted:    var(--muted, color-mix(in srgb, var(--fg) 40%, var(--bg)));
+    --_text-faint:    color-mix(in srgb, var(--fg) 25%, var(--bg));
+    --_line:          var(--line, color-mix(in srgb, var(--fg) 50%, var(--bg)));
+    --_arrow:         var(--accent, color-mix(in srgb, var(--fg) 85%, var(--bg)));
+    --_node-fill:     var(--surface, color-mix(in srgb, var(--fg) 3%, var(--bg)));
+    --_node-stroke:   var(--border, color-mix(in srgb, var(--fg) 20%, var(--bg)));
+    --_group-fill:    var(--bg);
+    --_group-hdr:     color-mix(in srgb, var(--fg) 5%, var(--bg));
+    --_inner-stroke:  color-mix(in srgb, var(--fg) 12%, var(--bg));
+    --_key-badge:     color-mix(in srgb, var(--fg) 10%, var(--bg));
+  }
+</style>
+<defs>
+</defs>
+<polyline class="er-relationship" data-entity1="USERS" data-entity2="PASSWORD_RESETS" data-cardinality1="one" data-cardinality2="zero-many" data-identifying="true" data-label="requests" points="200,203 220,203 220,414 432.418,414" fill="none" stroke="var(--_line)" stroke-width="1" />
+<polyline class="er-relationship" data-entity1="USERS" data-entity2="AUDIT_LOGS" data-cardinality1="one" data-cardinality2="zero-many" data-identifying="true" data-label="performs" points="200,250 210,250 210,650 432.418,650" fill="none" stroke="var(--_line)" stroke-width="1" />
+<polyline class="er-relationship" data-entity1="USERS" data-entity2="CHEATING_EVENTS" data-cardinality1="one" data-cardinality2="zero-many" data-identifying="true" data-label="reviews" points="200,156 432.418,156" fill="none" stroke="var(--_line)" stroke-width="1" />
+<g class="entity" data-id="USERS" data-label="USERS">
+  <rect x="40" y="109" width="160" height="188" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="40" y="109" width="160" height="34" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="120" y="126" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">USERS</text>
+  <line x1="40" y1="143" x2="200" y2="143" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <g><title>Auto Increment</title>
+  <rect x="46" y="147" width="22.31" height="14" rx="2" ry="2" fill="var(--_key-badge)" />
+  <text x="57.155" y="154" text-anchor="middle" dy="0.35em" font-size="9" font-weight="600" fill="var(--_text-sec)">PK</text>
+  <text x="76.31" y="154" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">INTEGER</tspan></text>
+  <text x="192" y="154" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">id</tspan></text>
+  </g>
+  <g><title>Unique</title>
+  <text x="48" y="176" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">TEXT</tspan></text>
+  <text x="192" y="176" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">username</tspan></text>
+  </g>
+  <g><title>Unique</title>
+  <text x="48" y="198" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">TEXT</tspan></text>
+  <text x="192" y="198" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">email</tspan></text>
+  </g>
+  <g><title>Bcrypt / SHA-256</title>
+  <text x="48" y="220" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">TEXT</tspan></text>
+  <text x="192" y="220" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">password_hash</tspan></text>
+  </g>
+  <g><title>Google OAuth Sub ID</title>
+  <text x="48" y="242" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">TEXT</tspan></text>
+  <text x="192" y="242" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">google_id</tspan></text>
+  </g>
+  <g><title>&#39;admin&#39; หรือ &#39;proctor&#39;</title>
+  <text x="48" y="264" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">TEXT</tspan></text>
+  <text x="192" y="264" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">role</tspan></text>
+  </g>
+  <g><title>วันที่สร้างบัญชี</title>
+  <text x="48" y="286" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">DATETIME</tspan></text>
+  <text x="192" y="286" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">created_at</tspan></text>
+  </g>
+</g>
+<g class="entity" data-id="PASSWORD_RESETS" data-label="PASSWORD_RESETS">
+  <rect x="432.418" y="342" width="164.07099999999994" height="144" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="432.418" y="342" width="164.07099999999994" height="34" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="514.4535" y="359" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">PASSWORD_RESETS</text>
+  <line x1="432.418" y1="376" x2="596.4889999999999" y2="376" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <g><title>Auto Increment</title>
+  <rect x="438.418" y="380" width="22.31" height="14" rx="2" ry="2" fill="var(--_key-badge)" />
+  <text x="449.573" y="387" text-anchor="middle" dy="0.35em" font-size="9" font-weight="600" fill="var(--_text-sec)">PK</text>
+  <text x="468.728" y="387" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">INTEGER</tspan></text>
+  <text x="588.4889999999999" y="387" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">id</tspan></text>
+  </g>
+  <g><title>ผูกกับตาราง USERS</title>
+  <rect x="438.418" y="402" width="22.31" height="14" rx="2" ry="2" fill="var(--_key-badge)" />
+  <text x="449.573" y="409" text-anchor="middle" dy="0.35em" font-size="9" font-weight="600" fill="var(--_text-sec)">FK</text>
+  <text x="468.728" y="409" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">INTEGER</tspan></text>
+  <text x="588.4889999999999" y="409" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">user_id</tspan></text>
+  </g>
+  <g><title>Secure Random Token</title>
+  <text x="440.418" y="431" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">TEXT</tspan></text>
+  <text x="588.4889999999999" y="431" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">token</tspan></text>
+  </g>
+  <g><title>เวลาหมดอายุโทเค็น (1 ชม.)</title>
+  <text x="440.418" y="453" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">DATETIME</tspan></text>
+  <text x="588.4889999999999" y="453" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">expires_at</tspan></text>
+  </g>
+  <g><title>0 = ยังไม่ใช้, 1 = ใช้แล้ว</title>
+  <text x="440.418" y="475" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">INTEGER</tspan></text>
+  <text x="588.4889999999999" y="475" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">used</tspan></text>
+  </g>
+</g>
+<g class="entity" data-id="AUDIT_LOGS" data-label="AUDIT_LOGS">
+  <rect x="432.418" y="556" width="160" height="188" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="432.418" y="556" width="160" height="34" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="512.418" y="573" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">AUDIT_LOGS</text>
+  <line x1="432.418" y1="590" x2="592.418" y2="590" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <g><title>Auto Increment</title>
+  <rect x="438.418" y="594" width="22.31" height="14" rx="2" ry="2" fill="var(--_key-badge)" />
+  <text x="449.573" y="601" text-anchor="middle" dy="0.35em" font-size="9" font-weight="600" fill="var(--_text-sec)">PK</text>
+  <text x="468.728" y="601" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">INTEGER</tspan></text>
+  <text x="584.418" y="601" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">id</tspan></text>
+  </g>
+  <g><title>ผู้ใช้งาน</title>
+  <rect x="438.418" y="616" width="22.31" height="14" rx="2" ry="2" fill="var(--_key-badge)" />
+  <text x="449.573" y="623" text-anchor="middle" dy="0.35em" font-size="9" font-weight="600" fill="var(--_text-sec)">FK</text>
+  <text x="468.728" y="623" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">INTEGER</tspan></text>
+  <text x="584.418" y="623" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">user_id</tspan></text>
+  </g>
+  <g><title>ชื่อผู้ใช้ขณะทำกิจกรรม</title>
+  <text x="440.418" y="645" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">TEXT</tspan></text>
+  <text x="584.418" y="645" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">username</tspan></text>
+  </g>
+  <g><title>เช่น LOGIN, PTZ_LEFT, REVIEW_EVENT</title>
+  <text x="440.418" y="667" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">TEXT</tspan></text>
+  <text x="584.418" y="667" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">action</tspan></text>
+  </g>
+  <g><title>IP เครื่องที่สั่งการ</title>
+  <text x="440.418" y="689" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">TEXT</tspan></text>
+  <text x="584.418" y="689" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">ip_address</tspan></text>
+  </g>
+  <g><title>รายละเอียดเพิ่มเติม</title>
+  <text x="440.418" y="711" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">TEXT</tspan></text>
+  <text x="584.418" y="711" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">details</tspan></text>
+  </g>
+  <g><title>วันเวลาที่เกิดเหตุการณ์</title>
+  <text x="440.418" y="733" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">DATETIME</tspan></text>
+  <text x="584.418" y="733" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">timestamp</tspan></text>
+  </g>
+</g>
+<g class="entity" data-id="CHEATING_EVENTS" data-label="CHEATING_EVENTS">
+  <rect x="432.418" y="40" width="160" height="232" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="432.418" y="40" width="160" height="34" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="512.418" y="57" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">CHEATING_EVENTS</text>
+  <line x1="432.418" y1="74" x2="592.418" y2="74" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <g><title>Auto Increment</title>
+  <rect x="438.418" y="78" width="22.31" height="14" rx="2" ry="2" fill="var(--_key-badge)" />
+  <text x="449.573" y="85" text-anchor="middle" dy="0.35em" font-size="9" font-weight="600" fill="var(--_text-sec)">PK</text>
+  <text x="468.728" y="85" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">INTEGER</tspan></text>
+  <text x="584.418" y="85" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">id</tspan></text>
+  </g>
+  <g><title>วันเวลาที่ตรวจพบ</title>
+  <text x="440.418" y="107" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">DATETIME</tspan></text>
+  <text x="584.418" y="107" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">timestamp</tspan></text>
+  </g>
+  <g><title>เช่น using_phone, looking_sideways</title>
+  <text x="440.418" y="129" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">TEXT</tspan></text>
+  <text x="584.418" y="129" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">event_type</tspan></text>
+  </g>
+  <g><title>ค่าความมั่นใจของ AI (0.0 - 1.0)</title>
+  <text x="440.418" y="151" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">REAL</tspan></text>
+  <text x="584.418" y="151" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">confidence</tspan></text>
+  </g>
+  <g><title>ตำแหน่งไฟล์คลิปไฮไลต์ .mp4</title>
+  <text x="440.418" y="173" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">TEXT</tspan></text>
+  <text x="584.418" y="173" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">video_path</tspan></text>
+  </g>
+  <g><title>ตำแหน่งไฟล์ภาพพรีวิว .jpg</title>
+  <text x="440.418" y="195" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">TEXT</tspan></text>
+  <text x="584.418" y="195" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">thumbnail_path</tspan></text>
+  </g>
+  <g><title>&#39;pending&#39;, &#39;confirmed&#39;, &#39;false_alarm&#39;</title>
+  <text x="440.418" y="217" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">TEXT</tspan></text>
+  <text x="584.418" y="217" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">status</tspan></text>
+  </g>
+  <g><title>ชื่อผู้คุมสอบที่กดตรวจ</title>
+  <text x="440.418" y="239" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">TEXT</tspan></text>
+  <text x="584.418" y="239" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">reviewed_by</tspan></text>
+  </g>
+  <g><title>บันทึกหมายเหตุเพิ่มเติม</title>
+  <text x="440.418" y="261" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">TEXT</tspan></text>
+  <text x="584.418" y="261" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">review_notes</tspan></text>
+  </g>
+</g>
+<line x1="204" y1="197" x2="204" y2="209" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="208" y1="197" x2="208" y2="209" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="428.418" y1="421" x2="416.418" y2="414" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="428.418" y1="414" x2="416.418" y2="414" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="428.418" y1="407" x2="416.418" y2="414" stroke="var(--_line)" stroke-width="1.25" />
+<circle cx="412.418" cy="414" r="4" fill="var(--bg)" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="204" y1="244" x2="204" y2="256" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="208" y1="244" x2="208" y2="256" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="428.418" y1="657" x2="416.418" y2="650" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="428.418" y1="650" x2="416.418" y2="650" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="428.418" y1="643" x2="416.418" y2="650" stroke="var(--_line)" stroke-width="1.25" />
+<circle cx="412.418" cy="650" r="4" fill="var(--bg)" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="204" y1="150" x2="204" y2="162" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="208" y1="150" x2="208" y2="162" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="428.418" y1="163" x2="416.418" y2="156" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="428.418" y1="156" x2="416.418" y2="156" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="428.418" y1="149" x2="416.418" y2="156" stroke="var(--_line)" stroke-width="1.25" />
+<circle cx="412.418" cy="156" r="4" fill="var(--bg)" stroke="var(--_line)" stroke-width="1.25" />
+<rect x="193.791" y="394.559" width="52.418000000000006" height="20.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="220" y="404.709" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">requests</text>
+<rect x="183.791" y="546.0590000000001" width="52.41799999999999" height="20.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="210" y="556.2090000000001" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">performs</text>
+<rect x="292.376" y="145.85" width="47.666" height="20.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="316.209" y="156" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">reviews</text>
+</svg>
