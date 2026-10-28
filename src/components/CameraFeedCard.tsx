@@ -20,6 +20,28 @@ export const CameraFeedCard: React.FC<CameraFeedCardProps> = ({
 }) => {
   const [timeMs, setTimeMs] = useState<string>('');
   const [liveFps, setLiveFps] = useState<number>(feed.fps);
+  const [ciraData, setCiraData] = useState<{
+    counts?: Record<string, number>;
+    has_anomaly?: boolean;
+    objects?: Array<{ class_name: string; confidence: number }>;
+    last_updated?: number;
+  } | null>(null);
+
+  useEffect(() => {
+    if (feed.id !== 'cam-01') return;
+    const fetchTelemetry = async () => {
+      try {
+        const res = await fetch('/api/cira/telemetry');
+        if (res.ok) {
+          const data = await res.json();
+          setCiraData(data);
+        }
+      } catch {}
+    };
+    fetchTelemetry();
+    const interval = setInterval(fetchTelemetry, 800);
+    return () => clearInterval(interval);
+  }, [feed.id]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -72,11 +94,41 @@ export const CameraFeedCard: React.FC<CameraFeedCardProps> = ({
 
         {/* Real Live Video Feed สำหรับกล้องที่ต่อ AI แล้ว (Port 5000) */}
         {feed.id === 'cam-01' ? (
-          <img 
-            src="http://10.114.70.249:5000/video_feed_1" 
-            alt="AI Processed Live Feed (MERCUSYS MC210)"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
+          <>
+            <img 
+              src="http://10.114.70.249:5000/video_feed_1" 
+              alt="AI Processed Live Feed (MERCUSYS MC210)"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            {/* CiRA CORE Real-Time Detection HUD Overlay */}
+            <div className="absolute top-2.5 left-2.5 z-20 flex flex-wrap items-center gap-1.5 pointer-events-none">
+              <span className="flex items-center gap-1 px-2 py-0.5 rounded bg-black/80 border border-cyan-500/40 text-[10px] font-mono text-cyan-300 backdrop-blur-md shadow-md">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                CiRA CORE AI
+              </span>
+              {ciraData?.counts && (
+                <>
+                  <span className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold backdrop-blur-md border ${
+                    (ciraData.counts['phone'] || 0) > 0
+                      ? 'bg-rose-950/90 border-rose-500 text-rose-200 animate-pulse'
+                      : 'bg-black/70 border-white/10 text-zinc-400'
+                  }`}>
+                    📱 Phone: {ciraData.counts['phone'] || 0}
+                  </span>
+                  <span className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold backdrop-blur-md border ${
+                    (ciraData.counts['Monitor'] || 0) > 0
+                      ? 'bg-amber-950/90 border-amber-500 text-amber-200'
+                      : 'bg-black/70 border-white/10 text-zinc-400'
+                  }`}>
+                    🖥️ Monitor: {ciraData.counts['Monitor'] || 0}
+                  </span>
+                  <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-black/70 border-white/10 text-emerald-400 backdrop-blur-md">
+                    👤 Normal: {ciraData.counts['normal'] || 0}
+                  </span>
+                </>
+              )}
+            </div>
+          </>
         ) : (
           <>
             {/* Ambient Room Perspective & Desk Layout */}

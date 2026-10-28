@@ -27,6 +27,27 @@ export const ExpandedCameraModal: React.FC<ExpandedCameraModalProps> = ({
   if (!feed) return null;
 
   const [zoomLevel, setZoomLevel] = useState<number>(1);
+  const [ciraData, setCiraData] = useState<{
+    counts?: Record<string, number>;
+    has_anomaly?: boolean;
+    objects?: Array<{ class_name: string; confidence: number }>;
+  } | null>(null);
+
+  useEffect(() => {
+    if (feed.id !== 'cam-01') return;
+    const fetchTelemetry = async () => {
+      try {
+        const res = await fetch('/api/cira/telemetry');
+        if (res.ok) {
+          const data = await res.json();
+          setCiraData(data);
+        }
+      } catch {}
+    };
+    fetchTelemetry();
+    const interval = setInterval(fetchTelemetry, 800);
+    return () => clearInterval(interval);
+  }, [feed.id]);
   const [visionSettings, setVisionSettings] = useState<VisionOverlaySettings>({
     showBoundingBoxes: true,
     showGazeVectors: true,
@@ -122,11 +143,41 @@ export const ExpandedCameraModal: React.FC<ExpandedCameraModalProps> = ({
                 style={{ transform: `scale(${zoomLevel})` }}
               >
                 {feed.id === 'cam-01' ? (
-                  <img 
-                    src="http://10.114.70.249:5000/video_feed_1" 
-                    alt="AI Processed Live Feed (MERCUSYS MC210)" 
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
+                  <>
+                    <img 
+                      src="http://10.114.70.249:5000/video_feed_1" 
+                      alt="AI Processed Live Feed (MERCUSYS MC210)" 
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    {/* CiRA CORE Detection HUD in Expanded View */}
+                    <div className="absolute top-3.5 left-3.5 z-20 flex flex-wrap items-center gap-2 pointer-events-none">
+                      <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/80 border border-cyan-500/50 text-xs font-mono text-cyan-300 backdrop-blur-md shadow-lg">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                        CiRA CORE AI DeepDetect
+                      </span>
+                      {ciraData?.counts && (
+                        <>
+                          <span className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold backdrop-blur-md border ${
+                            (ciraData.counts['phone'] || 0) > 0
+                              ? 'bg-rose-950/90 border-rose-500 text-rose-200 animate-pulse'
+                              : 'bg-black/70 border-white/10 text-zinc-400'
+                          }`}>
+                            📱 Phone: {ciraData.counts['phone'] || 0}
+                          </span>
+                          <span className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold backdrop-blur-md border ${
+                            (ciraData.counts['Monitor'] || 0) > 0
+                              ? 'bg-amber-950/90 border-amber-500 text-amber-200'
+                              : 'bg-black/70 border-white/10 text-zinc-400'
+                          }`}>
+                            🖥️ Monitor: {ciraData.counts['Monitor'] || 0}
+                          </span>
+                          <span className="px-2.5 py-1 rounded-lg text-xs font-mono bg-black/70 border-white/10 text-emerald-400 backdrop-blur-md">
+                            👤 Normal: {ciraData.counts['normal'] || 0}
+                          </span>
+                        </>
+                      )}
+                    </div>
+                  </>
                 ) : (
                   <svg className="absolute inset-0 w-full h-full text-zinc-800/40" viewBox="0 0 400 225" preserveAspectRatio="none">
                     <line x1="0" y1="225" x2="160" y2="40" stroke="currentColor" strokeWidth="0.8" strokeDasharray="3 3" />
