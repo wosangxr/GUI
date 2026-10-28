@@ -50,7 +50,7 @@ export const INITIAL_CAMERAS: CameraFeed[] = [
     id: 'cam-01',
     name: 'CAM 01 · Main Floor (Front Angle)',
     location: 'North Elevation / Pod A & B',
-    rtspUrl: 'http://10.114.70.249:5000/video_feed_1',
+    rtspUrl: 'http://10.114.70.161:5000/video_feed',
     fps: 30,
     resolution: '1920x1080 @ 60Hz',
     bitrate: '4.8 Mbps',
