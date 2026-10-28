@@ -145,7 +145,8 @@ export const ExpandedCameraModal: React.FC<ExpandedCameraModalProps> = ({
                 {feed.id === 'cam-01' ? (
                   <>
                     <img 
-                      src="http://10.114.70.161:5000/video_feed" 
+                      key={zoomLevel}
+                      src={`/api/video/live?t=${zoomLevel}`} 
                       alt="AI Processed Live Feed (MERCUSYS MC210)" 
                       className="absolute inset-0 w-full h-full object-cover"
                     />

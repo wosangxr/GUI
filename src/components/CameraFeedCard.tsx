@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Maximize2, Flag, AlertCircle, Compass } from 'lucide-react';
+import { Maximize2, Flag, AlertCircle, Compass, RefreshCw } from 'lucide-react';
 import { CameraFeed, VisionOverlaySettings } from '../types/proctor';
 import { CameraPtzOverlay } from './CameraPtzOverlay';
 
@@ -20,12 +20,21 @@ export const CameraFeedCard: React.FC<CameraFeedCardProps> = ({
 }) => {
   const [timeMs, setTimeMs] = useState<string>('');
   const [liveFps, setLiveFps] = useState<number>(feed.fps);
+  const [streamKey, setStreamKey] = useState<number>(Date.now());
+  const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
   const [ciraData, setCiraData] = useState<{
     counts?: Record<string, number>;
     has_anomaly?: boolean;
     objects?: Array<{ class_name: string; confidence: number }>;
     last_updated?: number;
   } | null>(null);
+
+  const handleReconnect = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setIsRefreshing(true);
+    setStreamKey(Date.now());
+    setTimeout(() => setIsRefreshing(false), 500);
+  };
 
   useEffect(() => {
     if (feed.id !== 'cam-01') return;
@@ -75,6 +84,15 @@ export const CameraFeedCard: React.FC<CameraFeedCardProps> = ({
         </div>
 
         <div className="flex items-center gap-2 font-mono text-[11px] text-zinc-400 tabular-nums">
+          {feed.id === 'cam-01' && (
+            <button
+              onClick={handleReconnect}
+              title="Refresh / Reconnect Live Stream"
+              className="p-1 rounded hover:bg-white/10 text-zinc-400 hover:text-cyan-400 transition-colors"
+            >
+              <RefreshCw className={`w-3 h-3 ${isRefreshing ? 'animate-spin text-cyan-400' : ''}`} />
+            </button>
+          )}
           <span className="hidden md:inline-block text-zinc-500">{feed.resolution}</span>
           <span className="text-zinc-600">|</span>
           <span className="text-cyan-400 font-medium">{liveFps} FPS</span>
@@ -96,7 +114,11 @@ export const CameraFeedCard: React.FC<CameraFeedCardProps> = ({
         {feed.id === 'cam-01' ? (
           <>
             <img 
-              src="http://10.114.70.161:5000/video_feed" 
+              key={streamKey}
+              src={`/api/video/live?t=${streamKey}`}
+              onError={() => {
+                setTimeout(() => setStreamKey(Date.now()), 2000);
+              }}
               alt="AI Processed Live Feed (MERCUSYS MC210)"
               className="absolute inset-0 w-full h-full object-cover"
             />
