@@ -70,11 +70,11 @@ export const CameraFeedCard: React.FC<CameraFeedCardProps> = ({
         <div className="absolute inset-0 pointer-events-none cctv-scanlines opacity-35 z-10" />
         <div className="absolute inset-0 pointer-events-none cctv-grid-pattern opacity-10" />
 
-        {/* Real Live Video Feed for CAM 01, Standby for CAM 02-04 */}
+        {/* Real Live Video Feed สำหรับกล้องที่ต่อ AI แล้ว (Port 5000) */}
         {feed.id === 'cam-01' ? (
           <img 
-            src="/api/video/live" 
-            alt="MERCUSYS MC210 Live Feed"
+            src="http://10.114.70.249:5000/video_feed_1" 
+            alt="AI Processed Live Feed (MERCUSYS MC210)"
             className="absolute inset-0 w-full h-full object-cover"
           />
         ) : (
