@@ -67,9 +67,12 @@ export const TopologyDrawer: React.FC<TopologyDrawerProps> = ({ isOpen, onClose 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+    <div 
+      className="fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-sm animate-in fade-in duration-200 overflow-hidden overscroll-contain"
+      onWheel={(e) => e.stopPropagation()}
+    >
       <div 
-        className="relative w-full max-w-2xl h-full liquid-glass-modal flex flex-col shadow-2xl border-l border-white/10 animate-in slide-in-from-right duration-300"
+        className="relative w-full max-w-2xl h-full liquid-glass-modal flex flex-col shadow-2xl border-l border-white/10 animate-in slide-in-from-right duration-300 overscroll-contain"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Drawer Header */}

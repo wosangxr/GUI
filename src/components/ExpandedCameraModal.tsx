@@ -46,9 +46,12 @@ export const ExpandedCameraModal: React.FC<ExpandedCameraModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/85 backdrop-blur-md animate-in fade-in duration-200 overflow-y-auto overscroll-contain"
+      onWheel={(e) => e.stopPropagation()}
+    >
       <div 
-        className="relative w-full max-w-6xl rounded-2xl liquid-glass-modal shadow-2xl flex flex-col overflow-hidden max-h-[94vh]"
+        className="relative w-full max-w-6xl rounded-2xl liquid-glass-modal shadow-2xl flex flex-col overflow-hidden max-h-[94vh] overscroll-contain my-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header Bar */}
@@ -118,61 +121,38 @@ export const ExpandedCameraModal: React.FC<ExpandedCameraModalProps> = ({
                 className="relative w-full h-full transition-transform duration-200 origin-center"
                 style={{ transform: `scale(${zoomLevel})` }}
               >
-                <svg className="absolute inset-0 w-full h-full text-zinc-800/40" viewBox="0 0 400 225" preserveAspectRatio="none">
-                  <line x1="0" y1="225" x2="160" y2="40" stroke="currentColor" strokeWidth="0.8" strokeDasharray="3 3" />
-                  <line x1="400" y1="225" x2="240" y2="40" stroke="currentColor" strokeWidth="0.8" strokeDasharray="3 3" />
-                  <path d="M 40 180 L 150 180 L 140 215 L 30 215 Z" fill="#11131a" stroke="#1f2430" strokeWidth="1" />
-                  <path d="M 210 180 L 320 180 L 330 215 L 220 215 Z" fill="#11131a" stroke="#1f2430" strokeWidth="1" />
-                  <path d="M 70 120 L 160 120 L 152 145 L 62 145 Z" fill="#11131a" stroke="#1f2430" strokeWidth="1" />
-                  <path d="M 210 120 L 300 120 L 308 145 L 218 145 Z" fill="#11131a" stroke="#1f2430" strokeWidth="1" />
-                </svg>
+                {feed.id === 'cam-01' ? (
+                  <img 
+                    src="/api/video/live" 
+                    alt="MERCUSYS MC210 Live Feed"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                ) : (
+                  <svg className="absolute inset-0 w-full h-full text-zinc-800/40" viewBox="0 0 400 225" preserveAspectRatio="none">
+                    <line x1="0" y1="225" x2="160" y2="40" stroke="currentColor" strokeWidth="0.8" strokeDasharray="3 3" />
+                    <line x1="400" y1="225" x2="240" y2="40" stroke="currentColor" strokeWidth="0.8" strokeDasharray="3 3" />
+                    <path d="M 40 180 L 150 180 L 140 215 L 30 215 Z" fill="#11131a" stroke="#1f2430" strokeWidth="1" />
+                    <path d="M 210 180 L 320 180 L 330 215 L 220 215 Z" fill="#11131a" stroke="#1f2430" strokeWidth="1" />
+                    <path d="M 70 120 L 160 120 L 152 145 L 62 145 Z" fill="#11131a" stroke="#1f2430" strokeWidth="1" />
+                    <path d="M 210 120 L 300 120 L 308 145 L 218 145 Z" fill="#11131a" stroke="#1f2430" strokeWidth="1" />
+                  </svg>
+                )}
 
-                {feed.students.map((student) => {
-                  const isFlagged = student.status === 'flagged';
-                  const isSuspicious = student.status === 'suspicious';
-                  return (
-                    <div
-                      key={student.id}
-                      className="absolute"
-                      style={{
-                        left: `${student.x}%`,
-                        top: `${student.y}%`,
-                        width: `${student.width}%`,
-                        height: `${student.height}%`,
-                      }}
-                    >
-                      {visionSettings.showBoundingBoxes && (
-                        <div
-                          className={`absolute inset-0 border-2 rounded-sm ${
-                            isFlagged
-                              ? 'border-rose-500 bg-rose-500/10'
-                              : isSuspicious
-                              ? 'border-amber-400 bg-amber-400/10'
-                              : 'border-cyan-500 bg-cyan-500/5'
-                          }`}
-                        >
-                          <div className="absolute -top-6 left-0 px-1.5 py-0.2 bg-black/90 border border-current rounded text-[9px] font-mono text-white whitespace-nowrap">
-                            {student.seat} | {student.id} | {student.postureScore}%
-                          </div>
-                        </div>
-                      )}
-
-                      {visionSettings.showGazeVectors && (
-                        <svg className="absolute -inset-10 w-[200%] h-[200%] pointer-events-none z-20">
-                          <line
-                            x1="50%"
-                            y1="30%"
-                            x2={`${50 + Math.sin((student.gazeAngle * Math.PI) / 180) * 35}%`}
-                            y2={`${30 + Math.cos((student.gazeAngle * Math.PI) / 180) * 30}%`}
-                            stroke={isFlagged ? '#f43f5e' : isSuspicious ? '#fbbf24' : '#22d3ee'}
-                            strokeWidth="2"
-                            strokeDasharray="2 2"
-                          />
-                        </svg>
-                      )}
+                {feed.id !== 'cam-01' && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none">
+                    <div className="px-4 py-2.5 rounded-xl liquid-glass border border-white/10 text-center space-y-1.5 backdrop-blur-sm shadow-xl">
+                      <div className="flex items-center justify-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                        <span className="font-mono text-sm font-semibold text-zinc-100 tracking-wider">
+                          {feed.name.split(' ? ')[0]} ? STANDBY
+                        </span>
+                      </div>
+                      <div className="font-mono text-xs text-zinc-400">
+                        MERCUSYS MC210 ? Ready for camera connection
+                      </div>
                     </div>
-                  );
-                })}
+                  </div>
+                )}
               </div>
 
               {/* Embed D-Pad in Expanded View */}
@@ -183,40 +163,19 @@ export const ExpandedCameraModal: React.FC<ExpandedCameraModalProps> = ({
               </div>
             </div>
 
-            {/* Vision Controls Toolbar */}
-            <div className="mt-3 flex items-center justify-between gap-2 text-xs">
-              <div className="flex items-center gap-1.5">
-                <span className="text-[11px] font-semibold text-zinc-400">CV Layers:</span>
-                <button
-                  onClick={() => toggleVision('showBoundingBoxes')}
-                  className={`px-2.5 py-1 rounded-lg text-xs border ${
-                    visionSettings.showBoundingBoxes
-                      ? 'bg-cyan-950/80 border-cyan-500/40 text-cyan-300'
-                      : 'bg-zinc-900 border-white/5 text-zinc-500'
-                  }`}
-                >
-                  Bounding Boxes
-                </button>
-                <button
-                  onClick={() => toggleVision('showGazeVectors')}
-                  className={`px-2.5 py-1 rounded-lg text-xs border ${
-                    visionSettings.showGazeVectors
-                      ? 'bg-cyan-950/80 border-cyan-500/40 text-cyan-300'
-                      : 'bg-zinc-900 border-white/5 text-zinc-500'
-                  }`}
-                >
-                  Gaze Rays
-                </button>
-                <button
-                  onClick={() => toggleVision('showPoseSkeleton')}
-                  className={`px-2.5 py-1 rounded-lg text-xs border ${
-                    visionSettings.showPoseSkeleton
-                      ? 'bg-emerald-950/80 border-emerald-500/40 text-emerald-300'
-                      : 'bg-zinc-900 border-white/5 text-zinc-500'
-                  }`}
-                >
-                  Pose Skeleton
-                </button>
+            {/* Camera Status Footer */}
+            <div className="mt-2.5 flex items-center justify-between gap-2 text-xs">
+              <div className="flex items-center gap-2">
+                <span className={`flex items-center gap-1.5 font-mono text-[11px] px-2 py-0.5 rounded-md border ${
+                  feed.id === 'cam-01'
+                    ? 'text-emerald-400 bg-emerald-950/60 border-emerald-500/30'
+                    : 'text-cyan-400 bg-cyan-950/60 border-cyan-500/30'
+                }`}>
+                  <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${
+                    feed.id === 'cam-01' ? 'bg-emerald-400' : 'bg-cyan-400'
+                  }`} />
+                  {feed.id === 'cam-01' ? 'REAL CAMERA STREAM' : 'STANDBY STREAM ? READY FOR LINK'}
+                </span>
               </div>
 
               <div className="text-[11px] text-zinc-400 font-mono">
@@ -225,61 +184,60 @@ export const ExpandedCameraModal: React.FC<ExpandedCameraModalProps> = ({
             </div>
           </div>
 
-          {/* Right: Examinee Roster & Stream Diagnostics */}
+                    {/* Right: Camera Diagnostics & Controls */}
           <div className="lg:w-4/12 p-5 flex flex-col justify-between space-y-4">
             <div className="space-y-3">
               <div className="flex items-center justify-between pb-2 border-b border-white/10">
                 <div className="flex items-center gap-2">
-                  <Users className="w-4 h-4 text-cyan-400" />
+                  <Video className="w-4 h-4 text-cyan-400" />
                   <span className="text-xs font-bold text-white uppercase tracking-wider">
-                    Examinees in View ({feed.students.length})
+                    {feed.id === 'cam-01' ? 'Live Camera Feed' : `${feed.name.split(' ? ')[0]} Diagnostics`}
                   </span>
                 </div>
-                <span className="text-[11px] font-mono text-zinc-500">Frustum Tracking</span>
+                <span className="font-mono text-[11px] text-zinc-500">
+                  {feed.id === 'cam-01' ? 'Real-time RTSP' : 'Standby Channel'}
+                </span>
               </div>
 
               <div className="space-y-2 max-h-72 overflow-y-auto pr-1">
-                {feed.students.map((student) => {
-                  const isFlagged = student.status === 'flagged';
-                  const isSuspicious = student.status === 'suspicious';
-
-                  return (
-                    <div
-                      key={student.id}
-                      className={`p-2.5 rounded-xl border text-xs flex items-center justify-between transition-colors ${
-                        isFlagged
-                          ? 'bg-rose-950/60 border-rose-500/40 text-rose-200'
-                          : isSuspicious
-                          ? 'bg-amber-950/60 border-amber-500/40 text-amber-200'
-                          : 'liquid-glass-card text-zinc-300'
-                      }`}
-                    >
-                      <div>
-                        <div className="flex items-center gap-1.5 font-semibold text-zinc-100">
-                          <span>{student.seat}</span>
-                          <span className="text-zinc-500">·</span>
-                          <span>{student.name}</span>
-                        </div>
-                        <div className="text-[11px] text-zinc-400 font-mono mt-0.5">
-                          ID: {student.id} · Posture: {student.postureScore}%
-                        </div>
-                        {student.notes && (
-                          <div className="text-[10px] text-rose-400 font-medium mt-1">
-                            {student.notes}
-                          </div>
-                        )}
-                      </div>
-
-                      <button
-                        onClick={() => onFlagStudent(student, feed)}
-                        className="px-2.5 py-1 rounded-lg liquid-glass text-[11px] text-rose-300 hover:text-rose-200 flex items-center gap-1 transition-colors"
-                      >
-                        <Flag className="w-3 h-3 text-rose-400" />
-                        <span>Flag</span>
-                      </button>
-                    </div>
-                  );
-                })}
+                <div className="p-3.5 rounded-xl liquid-glass-card text-xs font-mono space-y-2 border border-white/10">
+                  <div className="flex justify-between items-center font-semibold">
+                    <span className="text-zinc-400">STATUS:</span>
+                    <span className={`flex items-center gap-1.5 ${
+                      feed.id === 'cam-01' ? 'text-emerald-400' : 'text-cyan-300'
+                    }`}>
+                      <span className={`w-2 h-2 rounded-full animate-pulse ${
+                        feed.id === 'cam-01' ? 'bg-emerald-400' : 'bg-cyan-400'
+                      }`}></span>
+                      {feed.id === 'cam-01' ? 'LIVE CONNECTED' : 'STANDBY ? READY'}
+                    </span>
+                  </div>
+                  <div className="flex justify-between text-zinc-400">
+                    <span>DEVICE:</span>
+                    <span className="text-zinc-200">MERCUSYS MC210</span>
+                  </div>
+                  <div className="flex justify-between text-zinc-400">
+                    <span>ENDPOINT:</span>
+                    <span className="text-cyan-300 truncate max-w-[170px]">{feed.rtspUrl}</span>
+                  </div>
+                  <div className="flex justify-between text-zinc-400">
+                    <span>AI ENGINE:</span>
+                    <span className="text-amber-300">CiRA CORE / YOLOv4-tiny</span>
+                  </div>
+                  <div className="flex justify-between text-zinc-400">
+                    <span>RESOLUTION:</span>
+                    <span className="text-zinc-200">{feed.resolution}</span>
+                  </div>
+                  <div className="flex justify-between text-zinc-400">
+                    <span>PTZ CONTROL:</span>
+                    <span className="text-emerald-300">ONVIF ContinuousMove</span>
+                  </div>
+                  <div className="p-2.5 rounded-lg bg-black/40 text-[11px] text-zinc-400 border border-white/5 mt-2">
+                    {feed.id === 'cam-01'
+                      ? '?? ????? 1 ??????????????????????????? PTZ ?????????????'
+                      : '?? ??????????????????????????????????????? (RTSP & ONVIF PTZ ???????????)'}
+                  </div>
+                </div>
               </div>
 
               {/* Stream Telemetry Diagnostics */}

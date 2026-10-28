@@ -24,7 +24,11 @@ export interface UserRecord {
   id: number;
   username: string;
   email: string;
-  role: 'admin' | 'proctor';
+  role: 'admin' | 'chief_proctor' | 'proctor' | 'assistant';
+  name?: string;
+  password?: string;
+  assigned_room?: string;
+  avatar?: string;
   created_at: string;
 }
 
@@ -48,7 +52,7 @@ export interface AuditLogRecord {
   id: number;
   user_id: number;
   username: string;
-  action: 'LOGIN' | 'CAMERA_PTZ_LEFT' | 'CAMERA_PTZ_RIGHT' | 'CAMERA_PTZ_UP' | 'CAMERA_PTZ_DOWN' | 'REVIEW_EVENT' | 'DISPATCH_PROCTOR' | 'EXPORT_AUDIT_REPORT';
+  action: string;
   ip_address: string;
   details: string;
   timestamp: string;

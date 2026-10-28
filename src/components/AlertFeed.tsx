@@ -7,6 +7,7 @@ import {
   Radio
 } from 'lucide-react';
 import { IncidentAlert, AlertStatus } from '../types/proctor';
+import { UserRecord } from '../services/types';
 import { AlertCard } from './AlertCard';
 
 interface AlertFeedProps {
@@ -15,6 +16,7 @@ interface AlertFeedProps {
   onConfirmViolation: (alertId: string) => void;
   onDismissAlert: (alertId: string) => void;
   initialFilterStatus?: AlertStatus | 'all';
+  currentUser?: UserRecord;
 }
 
 export const AlertFeed: React.FC<AlertFeedProps> = ({
@@ -23,6 +25,7 @@ export const AlertFeed: React.FC<AlertFeedProps> = ({
   onConfirmViolation,
   onDismissAlert,
   initialFilterStatus = 'all',
+  currentUser,
 }) => {
   const [activeTab, setActiveTab] = useState<AlertStatus | 'all'>(initialFilterStatus);
   const [searchQuery, setSearchQuery] = useState('');
@@ -148,6 +151,7 @@ export const AlertFeed: React.FC<AlertFeedProps> = ({
               onReviewClip={onReviewClip}
               onConfirmViolation={onConfirmViolation}
               onDismissAlert={onDismissAlert}
+              currentUser={currentUser}
             />
           ))
         ) : (

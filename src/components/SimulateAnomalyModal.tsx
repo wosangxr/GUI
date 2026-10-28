@@ -123,9 +123,12 @@ export const SimulateAnomalyModal: React.FC<SimulateAnomalyModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/85 backdrop-blur-md animate-in fade-in duration-200 overflow-y-auto overscroll-contain"
+      onWheel={(e) => e.stopPropagation()}
+    >
       <div 
-        className="relative w-full max-w-lg rounded-2xl liquid-glass-modal shadow-2xl p-6 space-y-4"
+        className="relative w-full max-w-lg rounded-2xl liquid-glass-modal shadow-2xl p-6 space-y-4 overscroll-contain my-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}

@@ -119,10 +119,17 @@ class CameraPtzService {
 
     this.ptzStates.set(cameraId, updated);
 
+    // Send real ONVIF hardware command to backend
+    fetch('/api/camera/ptz', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ direction, speed }),
+    }).catch((e) => console.warn('PTZ fetch error:', e));
+
     // Diagram 4 Step 6-7: Record in SQLite Audit Log
     databaseService.addAuditLog({
-      user_id: 2,
-      username: 'tuna',
+      user_id: 1,
+      username: 'admin',
       action: auditAction,
       ip_address: '10.114.70.15',
       details: `ONVIF PTZ ${direction.toUpperCase()} (speed: ${speed}) on ${cameraId}. New coords: Pan ${updated.pan}°, Tilt ${updated.tilt}°`,
@@ -153,6 +160,11 @@ class CameraPtzService {
       lastCommandTime: new Date().toLocaleTimeString(),
     };
     this.ptzStates.set(cameraId, resetState);
+    fetch('/api/camera/ptz', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ direction: 'home', speed: 0.5 }),
+    }).catch((e) => console.warn('PTZ Home error:', e));
     eventBus.emit('PTZ_MOVED', resetState);
     return resetState;
   }

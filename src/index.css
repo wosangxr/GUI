@@ -1,18 +1,48 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  }
-  
-  .font-mono, [data-mono="true"] {
-    font-family: 'JetBrains Mono', monospace;
-  }
+@theme {
+  --font-sans: 'SF Pro Display', 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Sukhumvit Set', 'Thonburi', 'Prompt', system-ui, sans-serif;
+  --font-mono: 'SF Mono', SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, monospace;
+  --color-system-background: #FFFFFF;
+  --color-secondary-system: #1C1C1E;
 }
 
-/* Liquid Glass & Refractive Surface Utilities */
+:root {
+  font-family: 'SF Pro Display', 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Sukhumvit Set', 'Thonburi', 'Prompt', system-ui, sans-serif;
+  letter-spacing: -0.015em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --system-background: #FFFFFF;
+  --secondary-system: #1C1C1E;
+}
+
+/* Force iPhone Pro font consistency across all UI elements */
+*, *::before, *::after {
+  font-family: 'SF Pro Display', 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Sukhumvit Set', 'Thonburi', 'Prompt', system-ui, sans-serif;
+}
+
+/* Monospace overrides for telemetry, ports, tables and timestamps */
+.font-mono, [data-mono="true"], code, pre, kbd, samp, .font-mono * {
+  font-family: 'SF Mono', SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, monospace !important;
+  letter-spacing: -0.025em;
+}
+
+button, input, select, textarea, optgroup {
+  font-family: inherit;
+}
+
+/* Theme Palette Token Helpers */
+.bg-system-background {
+  background-color: #FFFFFF !important;
+}
+
+.bg-secondary-system {
+  background-color: #1C1C1E !important;
+}
+
+/* Liquid Glass & Refractive Surface Utilities (Based on Apple #1C1C1E Secondary System) */
 .liquid-glass {
-  background: rgba(13, 17, 23, 0.65);
+  background: rgba(28, 28, 30, 0.78);
   backdrop-filter: blur(16px) saturate(160%);
   -webkit-backdrop-filter: blur(16px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -22,17 +52,17 @@
 }
 
 .liquid-glass-card {
-  background: rgba(18, 22, 32, 0.55);
+  background: rgba(28, 28, 30, 0.68);
   backdrop-filter: blur(14px) saturate(150%);
   -webkit-backdrop-filter: blur(14px) saturate(150%);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 
     inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
     0 8px 24px -6px rgba(0, 0, 0, 0.45);
 }
 
 .liquid-glass-modal {
-  background: rgba(11, 15, 25, 0.82);
+  background: rgba(28, 28, 30, 0.92);
   backdrop-filter: blur(24px) saturate(170%);
   -webkit-backdrop-filter: blur(24px) saturate(170%);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -42,10 +72,10 @@
 }
 
 .liquid-glass-subtle {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(28, 28, 30, 0.45);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 /* CCTV and HUD effects */
@@ -94,3 +124,109 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.28);
 }
+
+/* Dedicated visible scrollbar for Log tables */
+.scrollbar-log-visible::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+.scrollbar-log-visible::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.65);
+  border-radius: 8px;
+}
+
+.scrollbar-log-visible::-webkit-scrollbar-thumb {
+  background: rgba(6, 182, 212, 0.45);
+  border-radius: 8px;
+  border: 1px solid rgba(6, 182, 212, 0.2);
+}
+
+.scrollbar-log-visible::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 182, 212, 0.75);
+}
+
+/* Light mode theme styling (Apple #FFFFFF System Background) */
+html.light, body.light {
+  color-scheme: light;
+  background-color: #FFFFFF !important;
+  color: #0f172a !important;
+}
+
+html.light #root {
+  background-color: #FFFFFF !important;
+}
+
+html.light .liquid-glass {
+  background: rgba(255, 255, 255, 0.90) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.9), 0 10px 30px -10px rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light .liquid-glass-card {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light .liquid-glass-modal {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 24px 64px -12px rgba(0, 0, 0, 0.12) !important;
+}
+
+html.light .liquid-glass-subtle {
+  background: #F2F2F7 !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+html.light .text-white,
+html.light .text-zinc-100 {
+  color: #0f172a !important;
+}
+
+html.light .text-zinc-200 {
+  color: #1e293b !important;
+}
+
+html.light .text-zinc-300 {
+  color: #334155 !important;
+}
+
+html.light .text-zinc-400 {
+  color: #64748b !important;
+}
+
+html.light .text-zinc-500 {
+  color: #94a3b8 !important;
+}
+
+html.light .bg-zinc-950,
+html.light .bg-zinc-950\/30,
+html.light .bg-zinc-950\/40,
+html.light .bg-zinc-950\/50,
+html.light .bg-zinc-950\/60,
+html.light .bg-zinc-950\/70,
+html.light .bg-zinc-950\/80 {
+  background-color: #F2F2F7 !important;
+}
+
+html.light .bg-zinc-900,
+html.light .bg-zinc-900\/90,
+html.light .bg-zinc-900\/80 {
+  background-color: #E5E5EA !important;
+}
+
+html.light .border-white\/10,
+html.light .border-white\/5,
+html.light .border-white\/15,
+html.light .border-white\/20 {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+html.light .bg-black\/80,
+html.light .bg-black\/60 {
+  background-color: rgba(15, 23, 42, 0.25) !important;
+}
+
+

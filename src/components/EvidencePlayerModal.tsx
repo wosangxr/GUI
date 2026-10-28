@@ -15,9 +15,11 @@ import {
   Clock,
   Layers,
   Database,
-  Radio
+  Radio,
+  Lock
 } from 'lucide-react';
 import { IncidentAlert } from '../types/proctor';
+import { UserRecord } from '../services/types';
 import { databaseService } from '../services/databaseService';
 import { playActionBlip } from '../utils/audio';
 
@@ -26,6 +28,8 @@ interface EvidencePlayerModalProps {
   onClose: () => void;
   onConfirmViolation: (alertId: string, note?: string) => void;
   onDismissAlert: (alertId: string, note?: string) => void;
+  currentUser?: UserRecord;
+  lang?: 'en' | 'th';
 }
 
 export const EvidencePlayerModal: React.FC<EvidencePlayerModalProps> = ({
@@ -33,6 +37,8 @@ export const EvidencePlayerModal: React.FC<EvidencePlayerModalProps> = ({
   onClose,
   onConfirmViolation,
   onDismissAlert,
+  currentUser,
+  lang = 'th',
 }) => {
   if (!alert) return null;
 
@@ -80,8 +86,8 @@ export const EvidencePlayerModal: React.FC<EvidencePlayerModalProps> = ({
   const handleDispatchProctor = () => {
     setDispatchSuccess(true);
     databaseService.addAuditLog({
-      user_id: 2,
-      username: 'tuna',
+      user_id: 1,
+      username: 'admin',
       action: 'DISPATCH_PROCTOR',
       ip_address: '10.114.70.15',
       details: `Assistant proctor dispatched to examinee ${alert.studentName} at ${alert.seatNumber}`,
@@ -120,9 +126,12 @@ Storage Path: /highlights/${alert.evidenceClip.clipName}`;
   const isPreBuffer = currentTime < triggerPointSec;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
+    <div 
+      className="fixed inset-0 z-[70] flex items-center justify-center p-3 sm:p-5 bg-black/80 backdrop-blur-md animate-in fade-in duration-200 overflow-y-auto overscroll-contain"
+      onWheel={(e) => e.stopPropagation()}
+    >
       <div 
-        className="relative w-full max-w-5xl rounded-2xl liquid-glass-modal shadow-2xl flex flex-col overflow-hidden max-h-[92vh]"
+        className="relative w-full max-w-5xl rounded-2xl liquid-glass-modal shadow-2xl flex flex-col overflow-hidden max-h-[92vh] overscroll-contain my-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Header Bar */}
@@ -435,46 +444,67 @@ Storage Path: /highlights/${alert.evidenceClip.clipName}`;
 
             {/* Bottom Decision Actions Suite (Diagram 3 Steps 14-16) */}
             <div className="pt-3 border-t border-white/10 space-y-2.5">
-              <button
-                onClick={handleDispatchProctor}
-                className={`w-full py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 border transition-all ${
-                  dispatchSuccess
-                    ? 'bg-emerald-950/80 border-emerald-500/60 text-emerald-300'
-                    : 'liquid-glass text-zinc-200 hover:border-cyan-500/40'
-                }`}
-              >
-                <Send className="w-3.5 h-3.5 text-cyan-400" />
-                <span>
-                  {dispatchSuccess
-                    ? 'Proctor Dispatched & Logged in audit_logs!'
-                    : 'Dispatch Hall Proctor to ' + alert.seatNumber}
-                </span>
-              </button>
+              {currentUser?.role === 'assistant' ? (
+                <div className="p-3.5 rounded-2xl bg-amber-950/40 border border-amber-500/30 text-amber-200 text-xs flex items-start gap-2.5">
+                  <Lock className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold flex items-center gap-1.5">
+                      <span>{lang === 'th' ? 'สิทธิ์ผู้ช่วยคุมสอบ (Assistant - View Only)' : 'Assistant Privilege (Read-Only)'}</span>
+                      <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-950 text-amber-300 border border-amber-500/40 font-mono">
+                        LOCKED
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-zinc-300 mt-1 leading-relaxed">
+                      {lang === 'th'
+                        ? 'บัญชีของคุณอยู่ในยศล่างสุด สามารถดูภาพหลักฐานคลิป 10 วินาทีได้เท่านั้น แต่ไม่มีสิทธิ์อนุมัติ ยืนยัน หรือยกเลิกผลการทุจริต โปรดแจ้งหัวหน้าคุมสอบหรือแอดมินเพื่อดำเนินการ'
+                        : 'Your account has view-only privileges. You cannot confirm, dismiss, or dispatch proctors. Please contact a Chief Proctor or Admin.'}
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <button
+                    onClick={handleDispatchProctor}
+                    className={`w-full py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 border transition-all ${
+                      dispatchSuccess
+                        ? 'bg-emerald-950/80 border-emerald-500/60 text-emerald-300'
+                        : 'liquid-glass text-zinc-200 hover:border-cyan-500/40'
+                    }`}
+                  >
+                    <Send className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>
+                      {dispatchSuccess
+                        ? 'Proctor Dispatched & Logged in audit_logs!'
+                        : 'Dispatch Hall Proctor to ' + alert.seatNumber}
+                    </span>
+                  </button>
 
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => {
-                    playActionBlip('confirm');
-                    onConfirmViolation(alert.id, proctorNote);
-                    onClose();
-                  }}
-                  className="flex-1 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-lg shadow-rose-950/50 transition-colors active:scale-95"
-                >
-                  <Check className="w-4 h-4" />
-                  <span>Confirm Cheating Violation</span>
-                </button>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => {
+                        playActionBlip('confirm');
+                        onConfirmViolation(alert.id, proctorNote);
+                        onClose();
+                      }}
+                      className="flex-1 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-lg shadow-rose-950/50 transition-colors active:scale-95 cursor-pointer"
+                    >
+                      <Check className="w-4 h-4" />
+                      <span>Confirm Cheating Violation</span>
+                    </button>
 
-                <button
-                  onClick={() => {
-                    playActionBlip('dismiss');
-                    onDismissAlert(alert.id, proctorNote);
-                    onClose();
-                  }}
-                  className="px-4 py-2.5 rounded-xl liquid-glass text-zinc-300 hover:text-white font-semibold text-xs transition-colors"
-                >
-                  Dismiss False Alarm
-                </button>
-              </div>
+                    <button
+                      onClick={() => {
+                        playActionBlip('dismiss');
+                        onDismissAlert(alert.id, proctorNote);
+                        onClose();
+                      }}
+                      className="px-4 py-2.5 rounded-xl liquid-glass text-zinc-300 hover:text-white font-semibold text-xs transition-colors cursor-pointer"
+                    >
+                      Dismiss False Alarm
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

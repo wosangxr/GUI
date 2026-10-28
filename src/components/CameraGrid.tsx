@@ -62,66 +62,8 @@ export const CameraGrid: React.FC<CameraGridProps> = ({
           </div>
         </div>
 
-        {/* Right: AI Vision Overlays & Layout Toggles */}
+        {/* Right: Layout Toggles */}
         <div className="flex flex-wrap items-center gap-2">
-          {/* AI Vision Layer Toggles */}
-          <div className="flex items-center gap-1 bg-zinc-950/60 border border-white/5 p-1 rounded-xl">
-            <span className="text-[10px] uppercase font-semibold text-zinc-400 px-1.5 hidden sm:inline-block">
-              Vision:
-            </span>
-            <button
-              onClick={() => toggleVisionSetting('showBoundingBoxes')}
-              className={`px-2 py-1 rounded-lg text-[11px] font-medium transition-colors flex items-center gap-1 ${
-                visionSettings.showBoundingBoxes
-                  ? 'bg-cyan-950/80 text-cyan-300 border border-cyan-500/40 shadow-sm'
-                  : 'text-zinc-400 hover:text-zinc-200'
-              }`}
-              title="Toggle Student & Object Bounding Boxes"
-            >
-              <Layers className="w-3 h-3" />
-              <span>Boxes</span>
-            </button>
-
-            <button
-              onClick={() => toggleVisionSetting('showGazeVectors')}
-              className={`px-2 py-1 rounded-lg text-[11px] font-medium transition-colors flex items-center gap-1 ${
-                visionSettings.showGazeVectors
-                  ? 'bg-cyan-950/80 text-cyan-300 border border-cyan-500/40 shadow-sm'
-                  : 'text-zinc-400 hover:text-zinc-200'
-              }`}
-              title="Toggle Gaze Tracking Vectors"
-            >
-              <Eye className="w-3 h-3" />
-              <span>Gaze</span>
-            </button>
-
-            <button
-              onClick={() => toggleVisionSetting('showPoseSkeleton')}
-              className={`px-2 py-1 rounded-lg text-[11px] font-medium transition-colors flex items-center gap-1 ${
-                visionSettings.showPoseSkeleton
-                  ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-500/40 shadow-sm'
-                  : 'text-zinc-400 hover:text-zinc-200'
-              }`}
-              title="Toggle Posture & Skeleton Points"
-            >
-              <SlidersHorizontal className="w-3 h-3" />
-              <span>Pose</span>
-            </button>
-
-            <button
-              onClick={() => toggleVisionSetting('showHeatmap')}
-              className={`px-2 py-1 rounded-lg text-[11px] font-medium transition-colors flex items-center gap-1 ${
-                visionSettings.showHeatmap
-                  ? 'bg-amber-950/80 text-amber-300 border border-amber-500/40 shadow-sm'
-                  : 'text-zinc-400 hover:text-zinc-200'
-              }`}
-              title="Toggle Room Anomaly Heatmap"
-            >
-              <Flame className="w-3 h-3" />
-              <span>Heatmap</span>
-            </button>
-          </div>
-
           {/* Grid Layout Switcher */}
           <div className="flex items-center gap-1 bg-zinc-950/60 border border-white/5 p-1 rounded-xl">
             <button

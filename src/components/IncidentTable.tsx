@@ -8,9 +8,11 @@ import {
   ShieldAlert, 
   AlertTriangle, 
   CheckCircle2,
-  FileSpreadsheet
+  FileSpreadsheet,
+  Lock
 } from 'lucide-react';
 import { IncidentAlert, IncidentType, ExamSession } from '../types/proctor';
+import { UserRecord } from '../services/types';
 import { exportProctorReportPDF, exportAlertsCSV } from '../utils/exportReport';
 import { playActionBlip } from '../utils/audio';
 
@@ -20,6 +22,7 @@ interface IncidentTableProps {
   onReviewClip: (alert: IncidentAlert) => void;
   onConfirmViolation: (alertId: string) => void;
   onDismissAlert: (alertId: string) => void;
+  currentUser?: UserRecord;
 }
 
 export const IncidentTable: React.FC<IncidentTableProps> = ({
@@ -28,6 +31,7 @@ export const IncidentTable: React.FC<IncidentTableProps> = ({
   onReviewClip,
   onConfirmViolation,
   onDismissAlert,
+  currentUser,
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedType, setSelectedType] = useState<string>('all');
@@ -284,28 +288,38 @@ export const IncidentTable: React.FC<IncidentTableProps> = ({
                         </button>
 
                         {isPending && (
-                          <>
-                            <button
-                              onClick={() => {
-                                playActionBlip('confirm');
-                                onConfirmViolation(alert.id);
-                              }}
-                              className="p-1 rounded-lg bg-rose-950/80 hover:bg-rose-900 text-rose-300 border border-rose-500/30"
-                              title="Confirm Cheating"
+                          currentUser?.role === 'assistant' ? (
+                            <span 
+                              className="text-[10px] text-zinc-500 font-mono flex items-center gap-1 bg-white/5 px-2 py-1 rounded-lg border border-white/5" 
+                              title="สิทธิ์ผู้ช่วยคุมสอบ: ดูได้อย่างเดียว ไม่อนุญาตให้อนุมัติหรือตัดสิทธิ์"
                             >
-                              <Check className="w-3.5 h-3.5" />
-                            </button>
-                            <button
-                              onClick={() => {
-                                playActionBlip('dismiss');
-                                onDismissAlert(alert.id);
-                              }}
-                              className="p-1 rounded-lg liquid-glass text-zinc-400 hover:text-white"
-                              title="Dismiss False Alarm"
-                            >
-                              <X className="w-3.5 h-3.5" />
-                            </button>
-                          </>
+                              <Lock className="w-3 h-3 text-amber-400" />
+                              <span className="hidden sm:inline">View Only</span>
+                            </span>
+                          ) : (
+                            <>
+                              <button
+                                onClick={() => {
+                                  playActionBlip('confirm');
+                                  onConfirmViolation(alert.id);
+                                }}
+                                className="p-1 rounded-lg bg-rose-950/80 hover:bg-rose-900 text-rose-300 border border-rose-500/30 cursor-pointer"
+                                title="Confirm Cheating"
+                              >
+                                <Check className="w-3.5 h-3.5" />
+                              </button>
+                              <button
+                                onClick={() => {
+                                  playActionBlip('dismiss');
+                                  onDismissAlert(alert.id);
+                                }}
+                                className="p-1 rounded-lg liquid-glass text-zinc-400 hover:text-white cursor-pointer"
+                                title="Dismiss False Alarm"
+                              >
+                                <X className="w-3.5 h-3.5" />
+                              </button>
+                            </>
+                          )
                         )}
                       </div>
                     </td>
