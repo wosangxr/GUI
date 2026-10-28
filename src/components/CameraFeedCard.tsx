@@ -96,7 +96,7 @@ export const CameraFeedCard: React.FC<CameraFeedCardProps> = ({
         {feed.id === 'cam-01' ? (
           <>
             <img 
-              src="http://172.20.10.4:5000/video_feed" 
+              src="http://10.114.70.249:5000/video_feed_1" 
               alt="AI Processed Live Feed (MERCUSYS MC210)"
               className="absolute inset-0 w-full h-full object-cover"
             />
